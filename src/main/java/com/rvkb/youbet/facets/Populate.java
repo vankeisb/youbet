@@ -26,7 +26,6 @@ public class Populate extends BaseResolutionFacet {
 
         Bet bet = new Bet();
         bet.setCreatedOn(new Date());
-        bet.setCreatedBy(remi.getUsername());
         bet.setTitle("combien de temps Tommy va-t-il se voir retirer son permis de conduire ?");
 
         store.save(bet);

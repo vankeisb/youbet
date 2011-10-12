@@ -1,24 +1,19 @@
 package com.rvkb.youbet.gae;
 
-import java.util.Arrays;
 import java.util.List;
 
+import com.rvkb.youbet.model.Bet;
 import com.rvkb.youbet.model.User;
-import woko.WokoInitListener;
-import woko.gae.GaeEntityManagerInterceptor;
-import woko.gae.GaeStore;
-import woko.inmemory.InMemoryUserManager;
+import woko.gae.jdo.GaeJdoWokoInitListener;
+import woko.gae.jdo.GaePersistenceManagerInterceptor;
 import woko.persistence.ObjectStore;
 import woko.users.UserManager;
 import woko.users.UsernameResolutionStrategy;
 import woko.auth.builtin.SessionUsernameResolutionStrategy;
 
-import woko.gae.GaeWokoInitListener;
+import javax.jdo.PersistenceManager;
 
-import javax.persistence.EntityManager;
-
-
-public class YouBetWokoInitListener extends GaeWokoInitListener {
+public class YouBetWokoInitListener extends GaeJdoWokoInitListener {
 
     private YouBetUserManager userManager;
     private YouBetWokoStore store;
@@ -34,8 +29,8 @@ public class YouBetWokoInitListener extends GaeWokoInitListener {
         YouBetUserManager um = new YouBetUserManager(store);
         // TODO remove this :
         // create default users
-        EntityManager em = GaeEntityManagerInterceptor.EMF.createEntityManager();
-        GaeEntityManagerInterceptor.setEntityManagerForCurrentThread(em);
+        PersistenceManager pm = GaePersistenceManagerInterceptor.PMF.getPersistenceManager();
+        GaePersistenceManagerInterceptor.setPersistenceManagerForCurrentThread(pm);
         try {
             User wdevel = store.getUser("wdevel");
             if (wdevel == null) {
@@ -45,13 +40,6 @@ public class YouBetWokoInitListener extends GaeWokoInitListener {
                 wdevel.setEmail("wdevel@rvkb.com");
                 store.save(wdevel);
             }
-        } finally {
-            em.close();
-            GaeEntityManagerInterceptor.clearEntityManagerForCurrentThread();
-        }
-        em = GaeEntityManagerInterceptor.EMF.createEntityManager();
-        GaeEntityManagerInterceptor.setEntityManagerForCurrentThread(em);
-        try {
             User user = store.getUser("remi");
             if (user == null) {
                 user = new User();
@@ -62,8 +50,8 @@ public class YouBetWokoInitListener extends GaeWokoInitListener {
             }
             return um;
         } finally {
-            em.close();
-            GaeEntityManagerInterceptor.clearEntityManagerForCurrentThread();
+            pm.close();
+            GaePersistenceManagerInterceptor.clearPersistenceManagerForCurrentThread();
         }
     }
 
