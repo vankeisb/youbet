@@ -18,6 +18,8 @@ class Bet {
 
     String title
 
+    String description
+
     @ManyToOne(fetch=FetchType.LAZY)
     User createdBy
 
