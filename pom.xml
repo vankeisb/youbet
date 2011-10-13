@@ -12,6 +12,11 @@
     </properties>
     <dependencies>
         <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy</artifactId>
+            <version>1.7.4</version>
+        </dependency>
+        <dependency>
             <groupId>com.rvkb</groupId>
             <artifactId>woko-ri</artifactId>
             <version>${woko.version}</version>

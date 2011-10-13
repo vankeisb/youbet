@@ -64,7 +64,7 @@
 
     <listener>
         <display-name>WokoInitListener</display-name>
-        <listener-class>woko.ri.RiWokoInitListener</listener-class>
+        <listener-class>com.rvkb.youbet.woko.YoubetWokoInitListener</listener-class>
     </listener>
 
     <context-param>
