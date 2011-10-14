@@ -8,7 +8,7 @@ class NewBet extends BaseForwardResolutionFacet {
 
     @Override
     String getPath() {
-        return '/WEB-INF/jsp/user/newbet.jsp'
+        return '/WEB-INF/jsp/user/editbet.jsp'
     }
 
 

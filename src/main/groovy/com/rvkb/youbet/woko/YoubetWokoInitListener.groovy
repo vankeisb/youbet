@@ -41,6 +41,12 @@ class YoubetWokoInitListener extends HibernateCompassWokoInitListener {
                   role:'user'
                 ])
                 s.save(remi)
+                User alex = new User([
+                  username:'alex',
+                  hashedPassword:um.hashPassword('alex'),
+                  role:'user'
+                ])
+                s.save(alex)
             }
             tx.commit()
         } catch(Exception e) {

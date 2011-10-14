@@ -6,8 +6,10 @@ import net.sourceforge.stripes.action.Resolution
 import net.sourceforge.stripes.action.ActionBeanContext
 import com.rvkb.youbet.model.Bet
 import com.rvkb.youbet.model.User
-import org.codehaus.groovy.control.messages.SimpleMessage
 import net.sourceforge.stripes.action.RedirectResolution
+import com.rvkb.youbet.woko.GroovyRpcResolutionWrapper
+import net.sourceforge.stripes.action.StreamingResolution
+import net.sourceforge.stripes.action.SimpleMessage
 
 @FacetKey(name="createBet", profileId="user")
 class CreateBet extends BaseResolutionFacet {
@@ -30,7 +32,13 @@ class CreateBet extends BaseResolutionFacet {
         objectStore.save(bet);
 
         actionBeanContext.messages.add(new SimpleMessage("Bet created. You can now invite people."))
-        new RedirectResolution("/view/Bet/${bet.id}");
+
+        return new GroovyRpcResolutionWrapper(
+          new RedirectResolution("/view/Bet/${bet.id}"),
+          {
+              return new StreamingResolution("text/json", "{success:true, betId:${bet.id}}")
+          }
+        )
     }
 
 

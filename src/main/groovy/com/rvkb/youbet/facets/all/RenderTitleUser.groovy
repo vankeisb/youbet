@@ -9,7 +9,7 @@ class RenderTitleUser extends RenderTitleImpl {
 
     @Override
     String getTitle() {
-        facetContext.targetObject.title
+        facetContext.targetObject.username
     }
 
 
