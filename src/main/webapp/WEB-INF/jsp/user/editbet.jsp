@@ -33,6 +33,8 @@
 
             var idCounter = 0;
 
+            var formControls = [];
+
             var genId = function() {
                 var res = "gen_" + idCounter;
                 idCounter++;
@@ -67,6 +69,7 @@
                         width: "300px"
                     }
                 });
+                formControls.push(textBox);
                 dojo.connect(textBox, 'onKeyUp', function() {
                     dijit.byId('save').setAttribute('disabled', false);
                 });
@@ -85,6 +88,7 @@
                         updateButtons();
                     }
                 });
+                formControls.push(btnPlus);
                 btnsTd.appendChild(btnPlus.domNode);
                 btnPlus.startup();
                 var btnMinus = new dijit.form.Button({
@@ -96,6 +100,7 @@
                         updateButtons();
                     }
                 });
+                formControls.push(btnMinus);
                 btnsTd.appendChild(btnMinus.domNode);
                 btnMinus.startup();
             };
@@ -219,6 +224,26 @@
                 </c:choose>
             };
 
+            <c:if test="${bet!=null && !bet.published}">
+                var publish = function() {
+                    var betId = ${bet.id};
+                    dojo.xhrPost({
+                        url: "${pageContext.request.contextPath}/publish/Bet/" + betId + "?isRpc=true",
+                        handleAs: "json",
+                        load: function(resp) {
+                            if (!resp.success) {
+                                alert('could not save your bet');
+                            } else {
+                                window.location="${pageContext.request.contextPath}/edit/Bet/" + betId ;
+                            }
+                        },
+                        error: function(resp) {
+                            alert('An error occured');
+                        }
+                    });
+                };
+            </c:if>
+
             dojo.addOnLoad(function() {
                 // disable buttons
                 dijit.byId("save").setAttribute("disabled", true);
@@ -249,7 +274,17 @@
                 updateButtons();
 
                 <c:if test="${bet!=null && bet.published==false && fn:length(bet.choices)>1}">
+                    console.log("disable");
                     dijit.byId('publish').setAttribute('disabled', false);
+                </c:if>
+
+                <c:if test="${bet!=null && bet.published}">
+                    // disable all fields
+                    formControls.push(dijit.byId('title'));
+                    formControls.push(dijit.byId('description'));
+                    dojo.forEach(formControls, function(fc) {
+                        fc.setAttribute('disabled', true);
+                    });
                 </c:if>
 
             });
@@ -282,16 +317,35 @@
             </div>
         </div>
 
-        <h1>
-            <c:choose>
-                <c:when test="${bet==null}">
-                    Create bet...
-                </c:when>
-                <c:otherwise>
-                    Edit bet
-                </c:otherwise>
-            </c:choose>
-        </h1>
+        <c:choose>
+            <c:when test="${bet==null}">
+                <h1>Create bet...</h1>
+                <p>
+                    You are creating a new bet. Please fill in the details, and save.
+                </p>
+            </c:when>
+            <c:otherwise>
+                <c:choose>
+                    <c:when test="${bet.published}">
+                        <h1>Bet published</h1>
+                        <p>
+                            This bet has already been published. You can only close it now !
+                        </p>
+                    </c:when>
+                    <c:otherwise>
+                        <h1>Edit bet</h1>
+                        <p>
+                            Editing the bet. You can save as many times as you want. Then, once your bet
+                            is ok, you can publish it so that others can join it, and bet on it.
+                            <br/>
+                            <br/>
+                            <b>IMPORTANT</b> : you won't be able to change your bet once it's published. Make
+                            sure everything is ok before you publish.
+                        </p>
+                    </c:otherwise>
+                </c:choose>
+            </c:otherwise>
+        </c:choose>
 
         <button id="save" data-dojo-type="dijit.form.Button" type="button">
             Save
@@ -301,22 +355,60 @@
             </script>
         </button>
         <div data-dojo-type="dijit.Tooltip" data-dojo-props="connectId:'save',position:['above']">
-            You are creating a new bet. Once you're finished specifying the bet informations,
-            click the <b>save</b> button.<br/>You can get back to the bet and modify it until you
-            <b>publish</b> it.
+            <c:choose>
+                <c:when test="${bet==null}">
+                    You are creating a new bet. Once you're finished specifying the bet informations,
+                    click the <b>save</b> button.<br/>You can get back to the bet and modify it until you
+                    <b>publish</b> it.
+                </c:when>
+                <c:otherwise>
+                    <c:choose>
+                        <c:when test="${bet.published}">
+                            You cannot save the bet, it's already been published.
+                        </c:when>
+                        <c:otherwise>
+                            Click to update your bet. You can get back to the bet and modify it until you
+                            <b>publish</b> it.
+                        </c:otherwise>
+                    </c:choose>
+                </c:otherwise>
+            </c:choose>
         </div>
         <button id="publish" data-dojo-type="dijit.form.Button" type="button">
             Publish
             <script type="dojo/method" data-dojo-event="onClick" data-dojo-args="evt">
-                // TODO
+                publish();
             </script>
         </button>
         <div data-dojo-type="dijit.Tooltip" data-dojo-props="connectId:'publish',position:['above']">
-            Once you have defined your bet, click this button to <b>publish</b> it. It will
-            then be open for others to join and bet.
-            <br/>
-            <b>IMPORTANT</b> : you won't be able to modify the bet once you publish it ! Be sure
-            you're ready...
+            <c:choose>
+                <c:when test="${bet==null}">
+                    Creating a new bet : please fill in the bet informations
+                    and save before you publish.
+                </c:when>
+                <c:otherwise>
+                    <c:choose>
+                        <c:when test="${bet.published}">
+                            This bet has already been published.
+                        </c:when>
+                        <c:otherwise>
+                            <c:choose>
+                                <c:when test="${fn:length(bet.choices)<=1}">
+                                    You need at least two choices !
+                                </c:when>
+                                <c:otherwise>
+                                    Click this button to <b>publish</b> your bet. It will
+                                    then be open for others to join and bet.
+                                    <br/>
+                                    <br/>
+                                    <b>IMPORTANT</b> : you won't be able to modify the bet once you publish it ! Be sure
+                                    you're ready...
+                                </c:otherwise>
+                            </c:choose>
+                        </c:otherwise>
+                    </c:choose>
+                </c:otherwise>
+            </c:choose>
         </div>
 
 
