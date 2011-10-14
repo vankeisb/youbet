@@ -262,14 +262,28 @@
             </div>
         </div>
 
-        <h1>Create a bet</h1>
-        <button data-dojo-type="dijit.form.Button" type="button">
+        <h1>
+            <c:choose>
+                <c:when test="${bet==null}">
+                    Create bet...
+                </c:when>
+                <c:otherwise>
+                    Edit bet
+                </c:otherwise>
+            </c:choose>
+        </h1>
+        <button id="save" data-dojo-type="dijit.form.Button" type="button">
             Save
             <script type="dojo/method" data-dojo-event="onClick" data-dojo-args="evt">
                 this.setAttribute('disabled', true);
                 createBet();
             </script>
         </button>
+        <div data-dojo-type="dijit.Tooltip" data-dojo-props="connectId:'save',position:['above']">
+            You are creating a new bet. Once you're finished specifying the bet informations,
+            click the <b>save</b> button.<br/>You can get back to the bet and modify it until you
+            <b>publish</b> it.
+        </div>
         <div dojoType="dijit.layout.TabContainer" style="width: 100%;" doLayout="false">
             <div dojoType="dijit.layout.ContentPane" title="Bet details" selected="true">
 
