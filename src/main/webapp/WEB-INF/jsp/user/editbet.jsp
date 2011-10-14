@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="http://stripes.sourceforge.net/stripes.tld" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="bet" value="${edit.facetContext.targetObject}"/>
 <w:facet facetName="layout" targetObject="${bet}"/>
 <c:choose>
@@ -65,6 +66,9 @@
                     style: {
                         width: "300px"
                     }
+                });
+                dojo.connect(textBox, 'onKeyUp', function() {
+                    dijit.byId('save').setAttribute('disabled', false);
                 });
                 titleTd.appendChild(textBox.domNode);
                 textBox.startup();
@@ -216,6 +220,10 @@
             };
 
             dojo.addOnLoad(function() {
+                // disable buttons
+                dijit.byId("save").setAttribute("disabled", true);
+                dijit.byId("publish").setAttribute("disabled", true);
+
                 // restore data if bet is not null, otherwise create an empty form
                 <c:choose>
                     <c:when test="${bet!=null}">
@@ -223,15 +231,27 @@
                         var description = dojo.byId("dataDescription").innerHTML;
                         dijit.byId("title").setValue(title);
                         dijit.byId("description").setValue(description);
-                        dojo.query('div.dataChoice', dojo.byId("dataChoices")).forEach(function(node) {
-                            addChoiceAfter(null, node.innerHTML);
-                        });
+                        <c:choose>
+                            <c:when test="${fn:length(bet.choices)==0}">
+                                addChoiceAfter();
+                            </c:when>
+                            <c:otherwise>
+                                dojo.query('div.dataChoice', dojo.byId("dataChoices")).forEach(function(node) {
+                                    addChoiceAfter(null, node.innerHTML);
+                                });
+                            </c:otherwise>
+                        </c:choose>
                     </c:when>
                     <c:otherwise>
                         addChoiceAfter();
                     </c:otherwise>
                 </c:choose>
                 updateButtons();
+
+                <c:if test="${bet!=null && bet.published==false && fn:length(bet.choices)>1}">
+                    dijit.byId('publish').setAttribute('disabled', false);
+                </c:if>
+
             });
 
         </script>
@@ -272,6 +292,7 @@
                 </c:otherwise>
             </c:choose>
         </h1>
+
         <button id="save" data-dojo-type="dijit.form.Button" type="button">
             Save
             <script type="dojo/method" data-dojo-event="onClick" data-dojo-args="evt">
@@ -284,6 +305,21 @@
             click the <b>save</b> button.<br/>You can get back to the bet and modify it until you
             <b>publish</b> it.
         </div>
+        <button id="publish" data-dojo-type="dijit.form.Button" type="button">
+            Publish
+            <script type="dojo/method" data-dojo-event="onClick" data-dojo-args="evt">
+                // TODO
+            </script>
+        </button>
+        <div data-dojo-type="dijit.Tooltip" data-dojo-props="connectId:'publish',position:['above']">
+            Once you have defined your bet, click this button to <b>publish</b> it. It will
+            then be open for others to join and bet.
+            <br/>
+            <b>IMPORTANT</b> : you won't be able to modify the bet once you publish it ! Be sure
+            you're ready...
+        </div>
+
+
         <div dojoType="dijit.layout.TabContainer" style="width: 100%;" doLayout="false">
             <div dojoType="dijit.layout.ContentPane" title="Bet details" selected="true">
 
@@ -296,8 +332,13 @@
                     </ul>
                 </div>
                 <input type="text" name="title" data-dojo-type="dijit.form.TextBox"
-                    trim="true" id="title"/> ?
-                <div class="ruler"></div>
+                    trim="true" id="title">
+                <script type="dojo/method" data-dojo-event="onKeyUp" data-dojo-args="evt">
+                    var tb = dijit.byId('title');
+                    var val = tb.getValue();
+                    dijit.byId('save').setAttribute('disabled', val==null || val.length===0);
+                </script>
+                </input>?
 
                 <h2><span id="choicesSection" class="helpTrigger">Choices</span></h2>
                 <div data-dojo-type="dijit.Tooltip" data-dojo-props="connectId:'choicesSection',position:['above']">
