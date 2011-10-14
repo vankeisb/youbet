@@ -34,6 +34,23 @@
                 return res;
             };
 
+            var countRows = function() {
+                var i = 0;
+                dojo.query('tr', dojo.byId('choices_body')).forEach(function(node) {
+                    i++
+                });
+                return i;
+            };
+
+            var updateButtons = function() {
+                var enableFirst = countRows() > 1;
+                dojo.query('tr', dojo.byId('choices_body')).forEach(function(node, index) {
+                    var theId = node.getAttribute('id');
+                    var enabled = enableFirst || index > 0;
+                    dijit.byId('btnMinus' + theId).setAttribute('disabled', !enabled);
+                });
+            };
+
             var createCells = function(theTr, theLabel) {
                 var theId = genId();
                 dojo.attr(theTr, 'id', theId);
@@ -47,13 +64,25 @@
                 }
                 var btnsTd = document.createElement("td");
                 theTr.appendChild(btnsTd);
-                var btnPlus = new dijit.form.Button({label:"+"});
+                var btnPlus = new dijit.form.Button({
+                    id:'btnPlus' + theId,
+                    label:"+",
+                    onClick: function() {
+                        addChoiceAfter(theTr);
+                        updateButtons();
+                    }
+                });
                 btnsTd.appendChild(btnPlus.domNode);
                 btnPlus.startup();
-                dojo.connect(btnPlus, 'onClick', function() {
-                    addChoiceAfter(theTr);
+                var btnMinus = new dijit.form.Button({
+                    disabled: true,
+                    id:'btnMinus' + theId,
+                    label:"-",
+                    onClick: function() {
+                        removeRow(theTr);
+                        updateButtons();
+                    }
                 });
-                var btnMinus = new dijit.form.Button({label:"-"});
                 btnsTd.appendChild(btnMinus.domNode);
                 btnMinus.startup();
             };
@@ -82,6 +111,23 @@
                     // append at end
                     tBody.appendChild(createRow(theLabel));
                 }
+            };
+
+            var removeRow = function(theTr) {
+                // destroy widgets
+                var theId = theTr.getAttribute('id');
+                dojo.forEach([
+                    "choiceTb" + theId,
+                    "btnPlus" + theId,
+                    "btnMinus" + theId],
+                    function(o) {
+                        dijit.byId(o).destroy();
+                    }
+                );
+                // remove row from dom
+                var parentNode = theTr.parentNode;
+                parentNode.removeChild(theTr);
+
             };
 
             var createBet = function() {
@@ -176,6 +222,7 @@
                         addChoiceAfter();
                     </c:otherwise>
                 </c:choose>
+                updateButtons();
             });
 
         </script>
