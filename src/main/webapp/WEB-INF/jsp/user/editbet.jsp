@@ -21,10 +21,14 @@
                 djConfig="debugAtAllCosts:true, parseOnLoad:true"></script>
         <link rel="stylesheet" type="text/css" href="${dojoRoot}/dojo/resources/dojo.css">
         <link rel="stylesheet" type="text/css" href="${dojoRoot}/dijit/themes/claro/claro.css" />
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/style/css/youbet.css"/>
         <script type="text/javascript">
             dojo.require("dijit.form.TextBox");
             dojo.require("dijit.form.Button");
             dojo.require("dijit.Editor");
+            dojo.require("dijit.layout.TabContainer");
+            dojo.require("dijit.layout.ContentPane");
+            dojo.require("dijit.Tooltip");
 
             var idCounter = 0;
 
@@ -56,7 +60,12 @@
                 dojo.attr(theTr, 'id', theId);
                 var titleTd = document.createElement("td");
                 theTr.appendChild(titleTd);
-                var textBox = new dijit.form.TextBox({id: "choiceTb" + theId});
+                var textBox = new dijit.form.TextBox({
+                    id: "choiceTb" + theId,
+                    style: {
+                        width: "300px"
+                    }
+                });
                 titleTd.appendChild(textBox.domNode);
                 textBox.startup();
                 if (theLabel) {
@@ -226,6 +235,19 @@
             });
 
         </script>
+        <style type="text/css">
+            #widget_title {
+                width: 400px;
+            }
+
+            .helpTrigger {
+                background-image: url("${pageContext.request.contextPath}/style/images/icon_help.gif");
+                background-repeat: no-repeat;
+                background-position: right;
+                padding-right: 24px;
+            }
+
+        </style>
     </s:layout-component>
 
     <s:layout-component name="body">
@@ -248,29 +270,39 @@
                 createBet();
             </script>
         </button>
-        <div class="help">
-            Select a short title for your bet, like :
-            <ul>
-                <li>Will it snow on christmas in Nice in 2012 ?</li>
-                <li>Is the LOSC going to win the french football championship ?</li>
-            </ul>
-        </div>
-        <label for="title">
-            Bet title
-        </label>
-        <input type="text" name="title" value="" size="100" data-dojo-type="dijit.form.TextBox"
-            trim="true" id="title">
-        <h2>Choices</h2>
-        <table id="choices">
-            <tbody id="choices_body">
-            </tbody>
-        </table>
-        <h2>Description</h2>
-        <div class="help">
-            Type the rules and terms of your bet if needed, so that everybody
-            has the same understanding, and nobody complains when the bet is closed.
-        </div>
-        <div data-dojo-type="dijit.Editor" id="description" data-dojo-props="onChange:function(){console.log('editor1 onChange handler: ' + arguments[0])}">
-        </div>
+        <div dojoType="dijit.layout.TabContainer" style="width: 100%;" doLayout="false">
+            <div dojoType="dijit.layout.ContentPane" title="Bet details" selected="true">
+
+                <h2><span id="titleSection" class="helpTrigger">Title</span></h2>
+                <div data-dojo-type="dijit.Tooltip" data-dojo-props="connectId:'titleSection',position:['above']">
+                    Select a short title for your bet, like :
+                    <ul>
+                        <li>Will it snow on christmas in Nice in 2012 ?</li>
+                        <li>Is the LOSC going to win the french football championship ?</li>
+                    </ul>
+                </div>
+                <input type="text" name="title" data-dojo-type="dijit.form.TextBox"
+                    trim="true" id="title"/> ?
+                <div class="ruler"></div>
+
+                <h2><span id="choicesSection" class="helpTrigger">Choices</span></h2>
+                <div data-dojo-type="dijit.Tooltip" data-dojo-props="connectId:'choicesSection',position:['above']">
+                    Specify the possible answers for your bet.
+                </div>
+                <table id="choices">
+                    <tbody id="choices_body">
+                    </tbody>
+                </table>
+
+            </div>
+            <div dojoType="dijit.layout.ContentPane" title="Description">
+                <h2><span id="descriptionSection" class="helpTrigger">Description of the bet</span></h2>
+                <div data-dojo-type="dijit.Tooltip" data-dojo-props="connectId:'descriptionSection',position:['above']">
+                    Type the rules and terms of your bet if needed, so that everybody
+                    has the same understanding, and nobody complains when the bet is closed.
+                </div>
+                <div data-dojo-type="dijit.Editor" id="description">
+                </div>
+            </div>
     </s:layout-component>
 </s:layout-render>

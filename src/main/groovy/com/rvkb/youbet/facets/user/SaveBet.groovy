@@ -36,6 +36,10 @@ class SaveBet extends SaveImpl {
 
     @Override
     boolean matchesTargetObject(Object targetObject) {
+        // check if bet is already published
+        if (targetObject.published) {
+            return false
+        }
         return checkTargetBetIsOwnedByCurrentUser(targetObject)
     }
 

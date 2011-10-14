@@ -20,6 +20,8 @@ class Bet {
 
     String description
 
+    Boolean published = false
+
     @ManyToOne(fetch=FetchType.LAZY)
     User createdBy
 
