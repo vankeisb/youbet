@@ -6,7 +6,7 @@ import com.rvkb.youbet.model.Bet
 import net.sourceforge.stripes.action.ActionBeanContext
 
 @FacetKey(name="save", profileId="user", targetObjectType=Bet.class)
-@Mixin(BetOwnerAbility)
+@Mixin(FacetCategory)
 class SaveBet extends SaveImpl {
 
     List<String> choices

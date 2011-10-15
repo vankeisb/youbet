@@ -5,7 +5,7 @@ import net.sourceforge.jfacets.annotations.FacetKey
 import com.rvkb.youbet.model.Bet
 
 @FacetKey(name="edit", profileId="user", targetObjectType=Bet.class)
-@Mixin(BetOwnerAbility)
+@Mixin(FacetCategory)
 class EditBet extends EditImpl {
 
     @Override

@@ -1,9 +1,19 @@
 package com.rvkb.youbet.facets.user
 
 import woko.facets.BaseFacet
+import com.rvkb.youbet.model.User
 
 @Category(BaseFacet)
-class BetOwnerAbility {
+class FacetCategory {
+
+    User getCurrentUser() {
+        def uname = woko.getUsername(facetContext.request)
+        if (uname==null) {
+            return null
+        } else {
+            return woko.objectStore.getUser(uname)
+        }
+    }
 
     def checkTargetBetIsOwnedByCurrentUser(bet) {
         def uname = woko.getUsername(facetContext.request)

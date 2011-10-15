@@ -11,7 +11,7 @@ import net.sourceforge.stripes.action.StreamingResolution
 import com.rvkb.youbet.woko.GroovyRpcResolutionWrapper
 
 @FacetKey(name="publish", profileId="user", targetObjectType=Bet.class)
-@Mixin(BetOwnerAbility)
+@Mixin(FacetCategory)
 class PublishBet extends BaseResolutionFacet {
 
     Resolution getResolution(ActionBeanContext abc) {

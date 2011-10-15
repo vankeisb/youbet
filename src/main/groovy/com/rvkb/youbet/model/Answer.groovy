@@ -5,21 +5,19 @@ import javax.persistence.Id
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.ManyToOne
-import javax.persistence.OneToMany
+import javax.persistence.FetchType
 
 @Entity
-class Choice {
+class Answer {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     Long id
 
-    String title
+    @ManyToOne(fetch=FetchType.LAZY)
+    Choice choice
 
-    @ManyToOne
-    Bet bet
-
-    @OneToMany(mappedBy="choice")
-    Set<Answer> answers
+    @ManyToOne(fetch=FetchType.LAZY)
+    User user
 
 }

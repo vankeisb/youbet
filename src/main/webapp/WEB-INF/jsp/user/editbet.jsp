@@ -22,7 +22,6 @@
                 djConfig="debugAtAllCosts:true, parseOnLoad:true"></script>
         <link rel="stylesheet" type="text/css" href="${dojoRoot}/dojo/resources/dojo.css">
         <link rel="stylesheet" type="text/css" href="${dojoRoot}/dijit/themes/claro/claro.css" />
-        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/style/css/youbet.css"/>
         <script type="text/javascript">
             dojo.require("dijit.form.TextBox");
             dojo.require("dijit.form.Button");
@@ -248,6 +247,7 @@
                 // disable buttons
                 dijit.byId("save").setAttribute("disabled", true);
                 dijit.byId("publish").setAttribute("disabled", true);
+                dijit.byId("close").setAttribute("disabled", true);
 
                 // restore data if bet is not null, otherwise create an empty form
                 <c:choose>
@@ -274,7 +274,6 @@
                 updateButtons();
 
                 <c:if test="${bet!=null && bet.published==false && fn:length(bet.choices)>1}">
-                    console.log("disable");
                     dijit.byId('publish').setAttribute('disabled', false);
                 </c:if>
 
@@ -285,6 +284,8 @@
                     dojo.forEach(formControls, function(fc) {
                         fc.setAttribute('disabled', true);
                     });
+                    // enable the close button
+                    dijit.byId('close').setAttribute('disabled', false);
                 </c:if>
 
             });
@@ -374,6 +375,7 @@
                 </c:otherwise>
             </c:choose>
         </div>
+        >
         <button id="publish" data-dojo-type="dijit.form.Button" type="button">
             Publish
             <script type="dojo/method" data-dojo-event="onClick" data-dojo-args="evt">
@@ -403,6 +405,39 @@
                                     <br/>
                                     <b>IMPORTANT</b> : you won't be able to modify the bet once you publish it ! Be sure
                                     you're ready...
+                                </c:otherwise>
+                            </c:choose>
+                        </c:otherwise>
+                    </c:choose>
+                </c:otherwise>
+            </c:choose>
+        </div>
+        >
+        <button id="close" data-dojo-type="dijit.form.Button" type="button">
+            Close
+            <script type="dojo/method" data-dojo-event="onClick" data-dojo-args="evt">
+                close();
+            </script>
+        </button>
+        <div data-dojo-type="dijit.Tooltip" data-dojo-props="connectId:'close',position:['above']">
+            <c:choose>
+                <c:when test="${bet==null}">
+                    You need to save your bet and publish it before you can close it.
+                </c:when>
+                <c:otherwise>
+                    <c:choose>
+                        <c:when test="${!bet.published}">
+                            You need to publish the bet before you close it.
+                        </c:when>
+                        <c:otherwise>
+                            <c:choose>
+                                <c:when test="${bet.closed}">
+                                    This bet is already closed.
+                                </c:when>
+                                <c:otherwise>
+                                    Click this button to <b>close</b> your bet by providing the
+                                    good answer. Once closed, people can't bet any more
+                                    and the results of the bet (for each person involved) is computed.
                                 </c:otherwise>
                             </c:choose>
                         </c:otherwise>

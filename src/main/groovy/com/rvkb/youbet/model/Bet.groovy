@@ -8,6 +8,7 @@ import javax.persistence.OneToMany
 import javax.persistence.FetchType
 import javax.persistence.CascadeType
 import javax.persistence.ManyToOne
+import javax.persistence.ManyToMany
 
 @Entity
 class Bet {
@@ -22,11 +23,16 @@ class Bet {
 
     Boolean published = false
 
+    Boolean closed = false
+
     @ManyToOne(fetch=FetchType.LAZY)
     User createdBy
 
     @OneToMany(mappedBy='bet', fetch=FetchType.LAZY, cascade=CascadeType.ALL)
     List<Choice> choices
+
+    @ManyToMany(fetch=FetchType.LAZY)
+    Set<User> joinedUsers
 
     Bet addChoice(String label) {
         Choice c = new Choice([title:label, bet:this])

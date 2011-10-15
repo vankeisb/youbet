@@ -7,3 +7,12 @@ h1 {
     margin-bottom: 6px;
     margin-top: 4px;
 }
+
+.betDescription {
+    padding: 4px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 0.9em;
+    background-color: #ffffff;
+    border: 1px solid #d3d3d3;
+}
