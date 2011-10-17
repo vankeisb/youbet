@@ -9,16 +9,10 @@
 <s:layout-render name="${layout.layoutPath}" layout="${layout}" pageTitle="Youbet: home">
     <s:layout-component name="body">
         <h1>Welcome to YouBet !</h1>
-        <div id="addbet">
-            <a href="${pageContext.request.contextPath}/newbet">Create bet</a>
-        </div>
         <p>
-            YouBet allows you to make bets with folks about anything.
+            YouBet! is an online betting-for-fun platform. You can browse bets as a
+            guest, but you'll need a valid account in order to create or join
+            existing bets.
         </p>
-        <h2>Active bets</h2>
-        <p>
-            TODO
-        </p>
-
     </s:layout-component>
 </s:layout-render>
