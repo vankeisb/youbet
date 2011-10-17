@@ -50,4 +50,5 @@ class Bet {
         joinedUsers << user
     }
 
+
 }

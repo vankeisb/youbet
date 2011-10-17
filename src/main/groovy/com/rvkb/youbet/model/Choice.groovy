@@ -22,5 +22,24 @@ class Choice {
     @OneToMany(mappedBy="choice")
     Set<Answer> answers
 
+    Integer getTotal() {
+        def total = 0
+        if (answers) {
+            answers.each { answer ->
+                total += answer.amount
+            }
+        }
+        return total
+    }
+
+    Integer getUserValue(User user) {
+        def v = 0
+        for (Answer a : answers) {
+            if (a.user.equals(user)) {
+                v += a.amount
+            }
+        }
+        return v
+    }
 
 }

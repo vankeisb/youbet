@@ -19,4 +19,17 @@ class RenderPropertyBetChoicesUser extends RenderPropertyBetChoicesGuest {
         }
     }
 
+    def getChoicesAndAmounts() {
+        def u = currentUser
+        def result = []
+        bet.choices.each { choice ->
+            def row = [:]
+            row.choice = choice
+            row.userBet = choice.getUserValue(u)
+            row.total = choice.getTotal()
+            result << row
+        }
+        return result
+    }
+
 }

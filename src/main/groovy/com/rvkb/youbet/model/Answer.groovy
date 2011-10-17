@@ -22,4 +22,6 @@ class Answer {
 
     Integer amount
 
+    Date createdOn = new Date()
+
 }

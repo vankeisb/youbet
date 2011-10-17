@@ -18,7 +18,7 @@
                     <td>${vs.index}</td>
                     <td><c:out value="${choice.title}"/></td>
                     <c:if test="${bet.published}">
-                        <td>TODO</td>
+                        <td>${choice.total}</td>
                     </c:if>
                 </tr>
             </c:forEach>
