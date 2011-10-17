@@ -17,11 +17,6 @@
 <s:layout-render name="${layout.layoutPath}" layout="${layout}" bodyClass="claro" pageTitle="${title}">
 
     <s:layout-component name="customJs">
-        <c:set var="dojoRoot" value="${pageContext.request.contextPath}/js/dojo-1.6.1"/>
-        <script type="text/javascript" src="${dojoRoot}/dojo/dojo.js"
-                djConfig="debugAtAllCosts:true, parseOnLoad:true"></script>
-        <link rel="stylesheet" type="text/css" href="${dojoRoot}/dojo/resources/dojo.css">
-        <link rel="stylesheet" type="text/css" href="${dojoRoot}/dijit/themes/claro/claro.css" />
         <script type="text/javascript">
             dojo.require("dijit.form.TextBox");
             dojo.require("dijit.form.Button");

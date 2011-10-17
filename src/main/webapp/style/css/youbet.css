@@ -16,3 +16,11 @@ h1 {
     background-color: #ffffff;
     border: 1px solid #d3d3d3;
 }
+
+.wokoProperties td {
+  border: none;
+}
+
+td.numCell {
+    text-align: right;
+}

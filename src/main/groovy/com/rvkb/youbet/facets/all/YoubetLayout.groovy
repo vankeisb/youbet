@@ -11,11 +11,13 @@ import woko.facets.builtin.all.LayoutAll
 class YoubetLayout extends LayoutAll {
 
     @Override
-    List<String> getCssIncludes() {
-        def css = []
-        css.addAll(super.getCssIncludes())
-        css << "/style/css/youbet.css"
-        return css
+    String getLayoutPath() {
+        '/WEB-INF/jsp/all/layout.jsp'
+    }
+
+    @Override
+    String getAppTitle() {
+        'YouBet'
     }
 
 
