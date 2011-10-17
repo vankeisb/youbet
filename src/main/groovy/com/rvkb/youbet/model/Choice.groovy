@@ -22,4 +22,5 @@ class Choice {
     @OneToMany(mappedBy="choice")
     Set<Answer> answers
 
+
 }

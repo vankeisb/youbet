@@ -20,4 +20,6 @@ class Answer {
     @ManyToOne(fetch=FetchType.LAZY)
     User user
 
+    Integer amount
+
 }

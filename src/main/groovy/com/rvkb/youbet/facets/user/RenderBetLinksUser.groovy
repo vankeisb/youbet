@@ -15,16 +15,14 @@ class RenderBetLinksUser extends RenderBetLinksGuest {
         def links = []
         Bet bet = facetContext.targetObject
         if (checkTargetBetIsOwnedByCurrentUser(bet)) {
-            // user is owner, allow edit if the bet ain't published yet
-            if (!bet.published) {
-                def link = new Link("/edit/Bet/${bet.id}", "Edit")
-                link.cssClass = "edit"
-                links << link
-            }
+            // user is owner, allow edit
+            def link = new Link("edit/Bet/${bet.id}", "Edit")
+            link.cssClass = "edit"
+            links << link
         } else {
             // user is not owner, show "join" link if not joined yet
             User user = getCurrentUser()
-            if (!(user?.joinedBets?.contains(bet))) {
+            if (!(user?.joinedBets?.contains(bet)) && bet.published) {
                 links << createJoinLink()
             }
         }

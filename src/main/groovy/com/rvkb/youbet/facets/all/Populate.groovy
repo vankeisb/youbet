@@ -26,6 +26,11 @@ class Populate extends BaseResolutionFacet {
             addChoice('2 ans')
         bet.description = "this is a <b>test</b><br/>description<ul><li>a</li><li>b</li></ul>"
 
+        bet.published = true
+
+        def alex = s.getUser("alex")
+        bet.joinUser(alex)
+
         s.save(bet)
         return new RedirectResolution("/view/Bet/${bet.id}")
     }

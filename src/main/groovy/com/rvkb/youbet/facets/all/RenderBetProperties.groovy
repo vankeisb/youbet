@@ -16,11 +16,12 @@ class RenderBetProperties extends RenderPropertiesImpl  {
     @Override
     List<String> getPropertyNames() {
         def props = []
+        props << "choices"
+        props << "description"
         if (!checkTargetBetIsOwnedByCurrentUser(facetContext.targetObject)) {
             props << "createdBy"
         }
-        props << "choices"
-        props << "description"
+        props << "joinedUsers"
         return props
     }
 

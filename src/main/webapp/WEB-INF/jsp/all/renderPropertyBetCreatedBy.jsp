@@ -2,6 +2,6 @@
 <%@ taglib prefix="w" tagdir="/WEB-INF/tags/woko" %>
 <c:set var="u" value="${renderPropertyValue.propertyValue}"/>
 <w:url object="${u}" var="userLink"/>
-<div class="betCreatedBy">Created by <a href="${userLink}">${u.username}</a></div>
+<p>This bet has been created by <a href="${userLink}">${u.username}</a></p>
 
 

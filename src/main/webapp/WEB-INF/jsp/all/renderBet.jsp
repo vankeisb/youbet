@@ -5,5 +5,10 @@
 <div class="wokoObject">
     <w:includeFacet targetObject="${o}" facetName="renderLinks"/>
     <w:includeFacet targetObject="${o}" facetName="renderTitle"/>
+    <c:if test="${!o.published}">
+        <p>
+            This bet is not published yet.
+        </p>
+    </c:if>
     <w:includeFacet targetObject="${o}" facetName="renderProperties"/>
 </div

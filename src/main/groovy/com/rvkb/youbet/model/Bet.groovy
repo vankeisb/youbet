@@ -43,4 +43,11 @@ class Bet {
         this
     }
 
+    def joinUser(User user) {
+        if (joinedUsers==null) {
+            joinedUsers = []
+        }
+        joinedUsers << user
+    }
+
 }
