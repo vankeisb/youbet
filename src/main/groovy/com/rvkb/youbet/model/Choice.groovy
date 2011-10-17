@@ -42,4 +42,10 @@ class Choice {
         return v
     }
 
+    void addToAnswers(Answer answer) {
+        if (answers==null) {
+            answers = []
+        }
+        answers << answer
+    }
 }

@@ -29,4 +29,10 @@ class User {
     @OneToMany(mappedBy="user", fetch=FetchType.LAZY)
     Set<Answer> answers
 
+    void addToAnswers(Answer answer) {
+        if (answers==null) {
+            answers = []
+        }
+        answers << answer
+    }
 }

@@ -21,6 +21,7 @@
             <link rel="stylesheet" type="text/css" href="${dojoRoot}/dijit/themes/claro/claro.css" />
             <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/style/css/youbet.css" />
             <script type="text/javascript" src="${pageContext.request.contextPath}/woko/js/woko.base.js"></script>
+            <script type="text/javascript" src="${pageContext.request.contextPath}/woko/js/woko.rpc.js"></script>
             <s:layout-component name="customCss"/>
             <s:layout-component name="customJs"/>
         </head>
