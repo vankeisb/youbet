@@ -8,12 +8,6 @@
     <html>
         <head>
             <title>${layout.appTitle} - ${pageTitle}</title>
-            <c:forEach items="${layout.cssIncludes}" var="cssLink">
-                <link rel="stylesheet" href="${pageContext.request.contextPath}${cssLink}" type="text/css">
-            </c:forEach>
-            <c:forEach items="${layout.jsIncludes}" var="jsLink">
-                <script type="text/javascript" src="${pageContext.request.contextPath}${jsLink}"></script>
-            </c:forEach>
             <c:set var="dojoRoot" value="${pageContext.request.contextPath}/js/dojo-1.6.1"/>
             <script type="text/javascript" src="${dojoRoot}/dojo/dojo.js"
                     djConfig="debugAtAllCosts:true, parseOnLoad:true"></script>
@@ -24,16 +18,30 @@
             <script type="text/javascript" src="${pageContext.request.contextPath}/woko/js/woko.rpc.js"></script>
             <s:layout-component name="customCss"/>
             <s:layout-component name="customJs"/>
+            <script type="text/javascript">
+                dojo.require("dijit.form.Button");
+                dojo.require("dijit.form.TextBox");
+            </script>
         </head>
         <body class="claro">
             <div id="wrap">
                 <div id="header-space">
                     <div id="logo">
-                        <img src="${pageContext.request.contextPath}/woko/woko-logo-small.png" alt="logo">
-                    </div>
-                    <div id="tagline">
+                        <span id="youT">You</span><span id="betT">Bet</span><span id="bangT">!</span>
+                        <div id="searchBox">
+                            <s:form action="/search">
+                                <input type="text" name="facet.query" data-dojo-type="dijit.form.TextBox"
+                                    data-dojo-props="trim:true"/>
+                                <button data-dojo-type="dijit.form.Button" type="submit" name="search">
+                                    search
+                                    <script type="dojo/method" data-dojo-event="onClick" data-dojo-args="evt">
+                                        this.setAttribute('disabled', true);
+                                    </script>
+                                </button>
+                            </s:form>
+                        </div>
                         <c:if test="${skipLoginLink==null}">
-                            <span class="authInfo">
+                            <span id="authInfo">
                                 <c:choose>
                                     <c:when test="${username != null}">
                                         <fmt:message key="woko.layout.loggedAs"/> <strong>${username}</strong> -
@@ -46,12 +54,6 @@
                                 </c:choose>
                             </span>
                         </c:if>
-                    </div>
-                    <div id="wokoSearchBox">
-                        <s:form action="/search">
-                            <s:text name="facet.query"/>
-                            <s:submit name="search"/>
-                        </s:form>
                     </div>
                 </div>
                 <div id="navbar">

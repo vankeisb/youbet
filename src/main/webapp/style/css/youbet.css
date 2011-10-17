@@ -8,13 +8,8 @@ h1 {
     margin-top: 4px;
 }
 
-.betDescription {
-    padding: 4px;
-    margin-left: 10px;
-    margin-right: 10px;
-    font-size: 0.9em;
-    background-color: #ffffff;
-    border: 1px solid #d3d3d3;
+body {
+    font-size: 16px;
 }
 
 .wokoProperties td {
@@ -27,4 +22,115 @@ td.numCell {
 
 #betHistory td {
     padding-right: 5px;
+}
+
+
+.betChoices th {
+    font-weight: bold;
+}
+
+.betChoices tr {
+    height: 30px;
+}
+
+#youT {
+    font-size: 38px;
+    color: #adff2f;
+}
+
+#betT {
+    font-size: 38px;
+}
+
+#bangT {
+    font-size: 38px;
+    color: #adff2f;
+}
+
+#header-space {
+    padding: 8px;
+}
+
+#searchBox {
+    position: absolute;
+    right: 6px;
+    top: 8px;
+}
+
+#navbar {
+    height: 24px;
+    padding: 4px;
+    vertical-align: middle;
+
+    background: #999; /* for non-css3 browsers */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff', endColorstr='#ADFF2F'); /* for IE */
+    background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ADFF2F)); /* for webkit browsers */
+    background: -moz-linear-gradient(top,  #fff, #ADFF2F); /* for firefox 3.6+ */
+}
+
+#navbar a {
+    text-decoration: none;
+    color: black;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+#navbar a:hover {
+    background-color: #F2FFDE;
+    -moz-border-radius: 6px;
+}
+
+#authInfo {
+    position: absolute;
+    top: 44px;
+    right: 6px;
+    font-size: 12px;
+}
+
+#nbar {
+    float: left;
+    height: 24px;
+    font-size: 18px;
+}
+
+#nbar li {
+    display: inline;
+    padding-right: 4px;
+}
+
+#nbar ul {
+    margin: 0;
+    padding-left: 0px;
+}
+
+
+#nbar li {
+    display: inline;
+}
+
+.wokoObjectLinks {
+    float: right;
+}
+
+ul.wokoObjectLinks  {
+    padding: 0;
+}
+
+.wokoObjectLinks li {
+    list-style-type: none;
+}
+
+
+#content-wrap {
+    width: 800px;
+    margin: auto
+}
+
+#content h1 {
+    padding-top: 10px;
+    font-size: 24px;
+    padding-bottom: 8px;
+
 }

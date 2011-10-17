@@ -16,8 +16,11 @@ class JoinBet extends BaseResolutionFacet {
     Resolution getResolution(ActionBeanContext abc) {
         Bet bet = facetContext.targetObject
         User user = currentUser
-        store.joinBet(user, bet)
-        abc.messages.add(new SimpleMessage("You have joined the bet."))
+        if (store.joinBet(user, bet)) {
+            abc.messages.add(new SimpleMessage("You have joined the bet."))
+        } else {
+            abc.messages.add(new SimpleMessage("You have already joined this bet."))
+        }
         return new RedirectResolution("/view/Bet/${bet.id}")
     }
 

@@ -22,7 +22,7 @@
             var total = row.total;
 
             var newTr = document.createElement('tr');
-            var titleTd = document.createElement('td');
+            var titleTd = document.createElement('th');
             titleTd.setAttribute("id", "title_" + choiceId);
             titleTd.innerHTML = choiceTitle;
             newTr.appendChild(titleTd);

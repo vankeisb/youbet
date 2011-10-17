@@ -70,7 +70,10 @@ class YoubetStore extends HibernateStore {
         return a
     }
 
-    void joinBet(User user, Bet bet) {
+    boolean joinBet(User user, Bet bet) {
+        if (bet?.joinedUsers?.contains(user) || bet?.createdBy==user) {
+            return false
+        }
         bet.joinUser(user)
         if (user.bets==null) {
             user.bets=[]
@@ -83,5 +86,6 @@ class YoubetStore extends HibernateStore {
           user: user
         ])
         save(e)
+        return true
     }
 }

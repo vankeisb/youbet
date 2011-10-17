@@ -2,11 +2,10 @@
 <c:set var="choices" value="${renderPropertyValue.propertyValue}"/>
 <c:set var="bet" value="${renderPropertyValue.bet}"/>
 <div class="betChoices">
-    <table>
+    <table cellspacing="8">
         <thead>
         <tr>
-            <th>#</th>
-            <th>Choice</th>
+            <th>&nbsp;</th>
             <c:if test="${bet.published}">
                 <th>All bets</th>
             </c:if>
@@ -15,10 +14,9 @@
         <tbody>
             <c:forEach var="choice" items="${choices}" varStatus="vs">
                 <tr>
-                    <td>${vs.index}</td>
-                    <td><c:out value="${choice.title}"/></td>
+                    <th><c:out value="${choice.title}"/></th>
                     <c:if test="${bet.published}">
-                        <td>${choice.total}</td>
+                        <td class="numCell">${choice.total}</td>
                     </c:if>
                 </tr>
             </c:forEach>
