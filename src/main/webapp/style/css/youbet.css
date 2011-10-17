@@ -24,3 +24,7 @@ h1 {
 td.numCell {
     text-align: right;
 }
+
+#betHistory td {
+    padding-right: 5px;
+}

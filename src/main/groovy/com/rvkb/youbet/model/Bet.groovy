@@ -9,6 +9,7 @@ import javax.persistence.FetchType
 import javax.persistence.CascadeType
 import javax.persistence.ManyToOne
 import javax.persistence.ManyToMany
+import javax.persistence.OrderBy
 
 @Entity
 class Bet {
@@ -33,6 +34,10 @@ class Bet {
 
     @ManyToMany(fetch=FetchType.LAZY)
     Set<User> joinedUsers
+
+    @OneToMany(mappedBy='bet', fetch=FetchType.LAZY, cascade=CascadeType.REMOVE)
+    @OrderBy("creationDate DESC")
+    List<BetHistoryEntry> history
 
     Bet addChoice(String label) {
         Choice c = new Choice([title:label, bet:this])
@@ -63,6 +68,7 @@ class Bet {
         }
         return result
     }
+
 
 
 

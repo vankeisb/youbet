@@ -15,8 +15,12 @@ class RenderBetLinksUser extends RenderBetLinksGuest {
         def links = []
         Bet bet = facetContext.targetObject
         if (checkTargetBetIsOwnedByCurrentUser(bet)) {
+            def linkText = "Edit"
+            if (bet.published) {
+                linkText = "Close"
+            }
             // user is owner, allow edit
-            def link = new Link("edit/Bet/${bet.id}", "Edit")
+            def link = new Link("edit/Bet/${bet.id}", linkText)
             link.cssClass = "edit"
             links << link
         } else {

@@ -2,6 +2,7 @@ package com.rvkb.youbet.facets.user
 
 import woko.facets.BaseFacet
 import com.rvkb.youbet.model.User
+import com.rvkb.youbet.woko.YoubetStore
 
 @Category(BaseFacet)
 class FacetCategory {
@@ -22,6 +23,10 @@ class FacetCategory {
             return uname == betOwner
         }
         return true // bet is probably transient
+    }
+
+    YoubetStore getStore() {
+        return objectStore
     }
 
 }

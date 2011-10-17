@@ -4,6 +4,12 @@ import com.rvkb.youbet.model.User
 import org.hibernate.criterion.Restrictions
 import woko.hibernate.HibernateStore
 import com.rvkb.youbet.model.Bet
+import com.rvkb.youbet.model.BetHistoryEntry
+import com.rvkb.youbet.model.Answer
+import com.rvkb.youbet.model.Choice
+import com.rvkb.youbet.model.BetHistoryEntryCreated
+import com.rvkb.youbet.model.BetHistoryEntryAnswerAdded
+import com.rvkb.youbet.model.BetHistoryEntryUserJoined
 
 class YoubetStore extends HibernateStore {
 
@@ -22,5 +28,60 @@ class YoubetStore extends HibernateStore {
         (List<Bet>)session.createCriteria(Bet.class).
           add(Restrictions.eq("createdBy", u)).
           list()
+    }
+
+    Bet createBet(String title, String description, User user, List<String> choices) {
+        Bet bet = new Bet([
+          title : title,
+          description: description,
+          createdBy: user
+        ])
+        choices.each { choice ->
+            bet.addChoice(choice)
+        }
+        save(bet)
+
+        BetHistoryEntry e = new BetHistoryEntryCreated([
+          bet: bet,
+          user: user
+        ])
+        save(e)
+
+        return bet
+    }
+
+    Answer addAnswer(Choice choice, User user, Integer value) {
+        Answer a = new Answer([
+            choice: choice,
+            user: user,
+            amount: value
+        ])
+        choice.addToAnswers(a)
+        user.addToAnswers(a)
+        save(a)
+
+        BetHistoryEntry e = new BetHistoryEntryAnswerAdded([
+          user: user,
+          bet: a.choice.bet,
+          answer: a
+        ])
+        save(e)
+
+        return a
+    }
+
+    void joinBet(User user, Bet bet) {
+        bet.joinUser(user)
+        if (user.bets==null) {
+            user.bets=[]
+        }
+        user.bets << bet
+        save(bet)
+
+        BetHistoryEntry e = new BetHistoryEntryUserJoined([
+          bet:bet,
+          user: user
+        ])
+        save(e)
     }
 }

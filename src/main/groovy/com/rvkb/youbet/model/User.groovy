@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue
 import javax.persistence.FetchType
 import javax.persistence.OneToMany
 import javax.persistence.ManyToMany
+import javax.persistence.OrderBy
 
 @Entity
 class User {
@@ -25,6 +26,10 @@ class User {
     String hashedPassword
 
     String role
+
+    @OneToMany(mappedBy="user", fetch=FetchType.LAZY)
+    @OrderBy("creationDate ASC")
+    List<BetHistoryEntry> betHistory
 
     @OneToMany(mappedBy="user", fetch=FetchType.LAZY)
     Set<Answer> answers

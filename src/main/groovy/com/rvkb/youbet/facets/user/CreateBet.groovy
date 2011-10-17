@@ -21,15 +21,7 @@ class CreateBet extends BaseResolutionFacet {
     Resolution getResolution(ActionBeanContext actionBeanContext) {
         String username = woko.getUsername(request)
         User user = objectStore.getUser(username)
-        Bet bet = new Bet([
-          title : title,
-          description: description,
-          createdBy: user
-        ])
-        choices.each { choice ->
-            bet.addChoice(choice)
-        }
-        objectStore.save(bet);
+        Bet bet = objectStore.createBet(title, description, user, choices)
 
         actionBeanContext.messages.add(new SimpleMessage("Bet created. You can now invite people."))
 

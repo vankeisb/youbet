@@ -19,13 +19,8 @@ class AddValueToChoice extends BaseResolutionFacet {
 
     Resolution getResolution(ActionBeanContext abc) {
         Choice choice = facetContext.targetObject
-        Answer a = new Answer([
-            choice: choice,
-            user: currentUser,
-            amount: value
-        ])
-        choice.addToAnswers(a)
-        currentUser.addToAnswers(a)
+
+        Answer a = store.addAnswer(choice, currentUser, value)
         objectStore.save(a)
 
         return new GroovyRpcResolutionWrapper(

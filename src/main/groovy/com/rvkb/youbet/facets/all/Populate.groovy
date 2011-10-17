@@ -13,25 +13,21 @@ import woko.Woko
 class Populate extends BaseResolutionFacet {
 
     Resolution getResolution(ActionBeanContext actionBeanContext) {
-        Woko w = facetContext.woko
         YoubetStore s = facetContext.woko.objectStore
         def user = s.getUser("remi")
-        Bet bet = new Bet([
-          title:'combien de temps Tommy va-t-il se faire niquer au permis',
-            createdBy: user
-        ])
-        bet.addChoice('1 mois').
-            addChoice('6 mois').
-            addChoice('1 an').
-            addChoice('2 ans')
-        bet.description = "this is a <b>test</b><br/>description<ul><li>a</li><li>b</li></ul>"
+
+        Bet bet = s.createBet('combien de temps Tommy va-t-il se faire niquer au permis',
+          "this is a <b>test</b><br/>description<ul><li>a</li><li>b</li></ul>",
+            user,
+          ['1 mois','6 mois','1 an','2 ans']
+        );
 
         bet.published = true
+        s.save(bet)
 
         def alex = s.getUser("alex")
-        bet.joinUser(alex)
+        s.joinBet(alex, bet)
 
-        s.save(bet)
         return new RedirectResolution("/view/Bet/${bet.id}")
     }
 

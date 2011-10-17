@@ -18,10 +18,7 @@ class RenderBetProperties extends RenderPropertiesImpl  {
         def props = []
         props << "choices"
         props << "description"
-        if (!checkTargetBetIsOwnedByCurrentUser(facetContext.targetObject)) {
-            props << "createdBy"
-        }
-        props << "joinedUsers"
+        props << "history"
         return props
     }
 
