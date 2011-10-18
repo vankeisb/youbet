@@ -16,5 +16,9 @@ class Home extends HomeImpl {
         return objectStore.getUserBets(woko.getUsername(request))
     }
 
+    Collection<Bet> getJoinedBets() {
+        return objectStore.getJoinedBets(woko.getUsername(request))
+    }
+
 
 }

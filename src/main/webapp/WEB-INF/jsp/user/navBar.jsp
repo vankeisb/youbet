@@ -2,5 +2,4 @@
 <ul>
     <li><a href="${pageContext.request.contextPath}/home"><fmt:message key="woko.guest.navbar.home"/></a></li>
     <li><a href="${pageContext.request.contextPath}/newbet">Create bet</a></li>
-    <li><a href="${pageContext.request.contextPath}/mybets">My bets</a></li>
 </ul>

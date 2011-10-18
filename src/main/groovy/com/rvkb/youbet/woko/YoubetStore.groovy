@@ -90,10 +90,18 @@ class YoubetStore extends HibernateStore {
         return true
     }
 
-    public List<BetHistoryEntry> getHistory () {
+    List<BetHistoryEntry> getHistory () {
         session.createCriteria(BetHistoryEntry.class).
           addOrder(Order.desc("creationDate")).
           list()
+    }
+
+    Collection<Bet> getJoinedBets(String username) {
+        User user = getUser(username)
+        if (user==null) {
+            return []
+        }
+        return user.joinedBets
     }
 
 }

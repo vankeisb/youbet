@@ -2,4 +2,5 @@
 <ul>
     <li><a href="${pageContext.request.contextPath}/home"><fmt:message key="woko.guest.navbar.home"/></a></li>
     <li><a href="${pageContext.request.contextPath}/signup">Sign up</a></li>
+    <li><a href="${pageContext.request.contextPath}/login">Sign in</a></li>
 </ul>

@@ -26,7 +26,7 @@ class FacetCategory {
     }
 
     YoubetStore getStore() {
-        return objectStore
+        return (YoubetStore)objectStore
     }
 
 }
