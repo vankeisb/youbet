@@ -10,6 +10,7 @@ import com.rvkb.youbet.model.Choice
 import com.rvkb.youbet.model.BetHistoryEntryCreated
 import com.rvkb.youbet.model.BetHistoryEntryAnswerAdded
 import com.rvkb.youbet.model.BetHistoryEntryUserJoined
+import org.hibernate.criterion.Order
 
 class YoubetStore extends HibernateStore {
 
@@ -88,4 +89,11 @@ class YoubetStore extends HibernateStore {
         save(e)
         return true
     }
+
+    public List<BetHistoryEntry> getHistory () {
+        session.createCriteria(BetHistoryEntry.class).
+          addOrder(Order.desc("creationDate")).
+          list()
+    }
+
 }

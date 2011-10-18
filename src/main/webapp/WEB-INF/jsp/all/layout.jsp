@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="http://stripes.sourceforge.net/stripes.tld" %>
 <%@ taglib prefix="w" tagdir="/WEB-INF/tags/woko" %>
+<%@ taglib prefix="y" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <w:username var="username"/>
 
@@ -27,7 +28,7 @@
             <div id="wrap">
                 <div id="header-space">
                     <div id="logo">
-                        <span id="youT">You</span><span id="betT">Bet</span><span id="bangT">!</span>
+                        <y:logo wrapperClass="headerLogo"/>
                         <div id="searchBox">
                             <s:form action="/search">
                                 <input type="text" name="facet.query" data-dojo-type="dijit.form.TextBox"

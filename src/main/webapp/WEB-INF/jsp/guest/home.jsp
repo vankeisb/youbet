@@ -1,18 +1,27 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="w" tagdir="/WEB-INF/tags/woko" %>
+<%@ taglib prefix="y" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="http://stripes.sourceforge.net/stripes.tld" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="o" value="${actionBean.object}"/>
 <w:facet facetName="layout" targetObject="${o}"/>
 <w:facet targetObject="${o}" facetName="renderTitle"/>
 <s:layout-render name="${layout.layoutPath}" layout="${layout}" pageTitle="Youbet: home">
     <s:layout-component name="body">
-        <h1>Welcome to YouBet !</h1>
+        <h1>Welcome to <y:logo/></h1>
         <p>
-            YouBet! is an online betting-for-fun platform. You can browse bets as a
+            <y:logo/> allows you and your mates to bet on virtually anything. It can be about the issue
+            of a sports event, about how many beers one can drink under the water...
+        </p>
+        <p class="help">
+            We don't handle the financial aspect of the bet if any. In case you're really betting
+            money, we don't wanna know !
+        </p>
+        <p>
+            You can browse bets as a
             guest, but you'll need a valid account in order to create or join
             existing bets.
         </p>
+        <y:activity/>
     </s:layout-component>
 </s:layout-render>
