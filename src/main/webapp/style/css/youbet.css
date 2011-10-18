@@ -71,6 +71,7 @@ td.numCell {
 #navbar {
     height: 22px;
     padding: 4px;
+    margin-bottom: 6px;
     vertical-align: middle;
 }
 
@@ -88,31 +89,15 @@ td.numCell {
 }
 
 #navbar li {
-    /*border: 1px solid #ddd;*/
-    /*padding: 4px;*/
-    /*-moz-border-radius: 6px;*/
+    border: 1px solid #ddd;
+    padding: 4px;
+    -moz-border-radius: 6px;
 
-    /*background: #fff; *//* for non-css3 browsers */
-    /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff', endColorstr='#ccc'); *//* for IE */
-    /*background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ccc)); *//* for webkit browsers */
-    /*background: -moz-linear-gradient(top,  #fff, #ccc); *//* for firefox 3.6+ */
-
-    background-color: #E9F4FE;
-    background-image: url("../../js/dojo-1.6.1/dijit/themes/claro/form/images/button.png");
-    background-position: center top;
-    background-repeat: repeat-x;
-    border: 1px solid #769DC0;
-    border-radius: 4px 4px 4px 4px;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
-    padding: 2px 4px 4px;
+    background: #fff;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff', endColorstr='#ccc'); /*  for IE */
+    background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ccc));  /* for webkit browsers */
+    background: -moz-linear-gradient(top,  #fff, #ccc);  /* for firefox 3.6+ */
 }
-
-#navbar li:hover {
-    background-color: #abd6ff;
-    -moz-transition-duration: 0.2s;
-    color: #000000;
-}
-
 
 #authInfo {
     position: absolute;
@@ -148,7 +133,9 @@ td.numCell {
 
 ul.wokoObjectLinks  {
     padding: 0;
+    margin-top: 10px;
 }
+
 
 .wokoObjectLinks li {
     list-style-type: none;
@@ -207,6 +194,45 @@ ul.wokoObjectLinks  {
     background: -moz-linear-gradient(top,  #fff, #eee); /* for firefox 3.6+ */
 }
 
-.betChoices tr {
-    border: 1px solid #d3d3d3;
+.betChoices td {
+    padding: 4px;
+    border-bottom: 1px solid #d3d3d3;
+}
+
+.betChoices th {
+    border-bottom: 1px solid #d3d3d3;
+}
+
+.errorsContainer {
+    margin: 6px;
+    padding: 8px;
+    border: 1px solid #990000;
+    background-color: #ffcccc;
+    font-size: 12px;
+}
+
+.errorsContainer ul {
+    margin: 0px;
+}
+
+input.error, input.dojoLike.error {
+    border: 1px solid #990000;
+    background-color: #ffff00;
+}
+
+input.dojoLike {
+    padding: 1px 2px;
+    font-size: 16px;
+    background-color: white;
+    border: 1px solid #B5BCC7;
+}
+
+input.dojoLike:hover {
+    background-color: #E9F4FE;
+    border: 1px solid #769DC0;
+    -moz-transition-duration: 0.25s;
+}
+
+input.dojoLike:focus {
+    border: 1px solid #769DC0;
 }

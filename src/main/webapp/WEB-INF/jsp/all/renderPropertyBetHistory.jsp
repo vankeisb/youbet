@@ -10,7 +10,7 @@
             <c:forEach var="item" items="${history}">
                 <tr>
                     <td>
-                        <fmt:formatDate value="${item.creationDate}" type="both" dateStyle="full"/>
+                        <fmt:formatDate value="${item.creationDate}" type="both" dateStyle="short"/>
                     </td>
                     <td>
                         <w:url object="${item.user}" var="userLink"/>

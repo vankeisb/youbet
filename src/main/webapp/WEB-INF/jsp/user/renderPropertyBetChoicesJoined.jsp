@@ -150,7 +150,7 @@
 
 
 <div class="betChoices">
-    <table cellspacing="8">
+    <table cellpadding="8" cellspacing="0">
         <thead>
         <tr>
             <th>&nbsp;</th>
