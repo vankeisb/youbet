@@ -11,7 +11,6 @@
     List<BetHistoryEntry> history = store.getHistory();
 %>
 <div class="activity">
-    <h2>Bet activity</h2>
     <table id="betHistory">
         <tbody>
             <c:forEach var="item" items="<%=history%>">

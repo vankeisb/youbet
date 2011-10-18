@@ -22,6 +22,8 @@
             guest, but you'll need a valid account in order to create or join
             existing bets.
         </p>
+
+        <h2>Recent activity</h2>
         <y:activity/>
     </s:layout-component>
 </s:layout-render>

@@ -28,7 +28,9 @@
             <div id="wrap">
                 <div id="header-space">
                     <div id="logo">
-                        <y:logo wrapperClass="headerLogo"/>
+                        <a href="${pageContext.request.contextPath}">
+                            <y:logo wrapperClass="headerLogo"/>
+                        </a>
                         <div id="searchBox">
                             <s:form action="/search">
                                 <input type="text" name="facet.query" data-dojo-type="dijit.form.TextBox"

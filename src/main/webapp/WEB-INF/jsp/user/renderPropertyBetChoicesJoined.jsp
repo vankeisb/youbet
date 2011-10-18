@@ -33,12 +33,6 @@
             newTr.appendChild(userBetTd);
             dojo.addClass(userBetTd, 'numCell');
 
-            var totalTd = document.createElement('td');
-            totalTd.setAttribute("id", "total_" + choiceId);
-            totalTd.innerHTML = total;
-            newTr.appendChild(totalTd);
-            dojo.addClass(totalTd, 'numCell');
-
             var addTd = document.createElement('td');
             newTr.appendChild(addTd);
             var tb = new dijit.form.NumberTextBox({
@@ -72,6 +66,12 @@
             addTd.appendChild(btn.domNode);
             btn.startup();
             buttons.push(btn);
+
+            var totalTd = document.createElement('td');
+            totalTd.setAttribute("id", "total_" + choiceId);
+            totalTd.innerHTML = total;
+            newTr.appendChild(totalTd);
+            dojo.addClass(totalTd, 'numCell');
 
             return newTr;
         };
@@ -155,8 +155,8 @@
         <tr>
             <th>&nbsp;</th>
             <th>Your bet</th>
-            <th>All bets</th>
             <th>&nbsp;</th>
+            <th>All bets</th>
         </tr>
         </thead>
         <tbody id="choicesBody">

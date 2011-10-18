@@ -56,6 +56,10 @@ td.numCell {
 #header-space {
     padding: 8px;
     height: 42px;
+    background: #cccccc; /* for non-css3 browsers */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#cccccc', endColorstr='#fff'); /* for IE */
+    background: -webkit-gradient(linear, left top, left bottom, from(#cccccc), to(#fff)); /* for webkit browsers */
+    background: -moz-linear-gradient(top,  #cccccc, #fff); /* for firefox 3.6+ */
 }
 
 #searchBox {
@@ -68,11 +72,6 @@ td.numCell {
     height: 22px;
     padding: 4px;
     vertical-align: middle;
-
-    background: #999; /* for non-css3 browsers */
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff', endColorstr='#ADFF2F'); /* for IE */
-    background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ADFF2F)); /* for webkit browsers */
-    background: -moz-linear-gradient(top,  #fff, #ADFF2F); /* for firefox 3.6+ */
 }
 
 #navbar a {
@@ -84,10 +83,36 @@ td.numCell {
     padding-bottom: 3px;
 }
 
-#navbar a:hover {
-    background-color: #F2FFDE;
-    -moz-border-radius: 6px;
+#logo a {
+    text-decoration: none;
 }
+
+#navbar li {
+    /*border: 1px solid #ddd;*/
+    /*padding: 4px;*/
+    /*-moz-border-radius: 6px;*/
+
+    /*background: #fff; *//* for non-css3 browsers */
+    /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff', endColorstr='#ccc'); *//* for IE */
+    /*background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ccc)); *//* for webkit browsers */
+    /*background: -moz-linear-gradient(top,  #fff, #ccc); *//* for firefox 3.6+ */
+
+    background-color: #E9F4FE;
+    background-image: url("../../js/dojo-1.6.1/dijit/themes/claro/form/images/button.png");
+    background-position: center top;
+    background-repeat: repeat-x;
+    border: 1px solid #769DC0;
+    border-radius: 4px 4px 4px 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+    padding: 2px 4px 4px;
+}
+
+#navbar li:hover {
+    background-color: #abd6ff;
+    -moz-transition-duration: 0.2s;
+    color: #000000;
+}
+
 
 #authInfo {
     position: absolute;
@@ -99,7 +124,7 @@ td.numCell {
 #nbar {
     float: left;
     height: 24px;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 #nbar li {
@@ -167,4 +192,21 @@ ul.wokoObjectLinks  {
 
 #rightCol {
     float: right;
+}
+
+.wokoObject {
+    border: 1px solid #d3d3d3;
+    -moz-border-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+
+    background: #cccccc; /* for non-css3 browsers */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff', endColorstr='#eee'); /* for IE */
+    background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#eee)); /* for webkit browsers */
+    background: -moz-linear-gradient(top,  #fff, #eee); /* for firefox 3.6+ */
+}
+
+.betChoices tr {
+    border: 1px solid #d3d3d3;
 }

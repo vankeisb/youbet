@@ -50,6 +50,7 @@
             </c:otherwise>
         </c:choose>
 
+        <h2>Recent activity</h2>
         <y:activity/>
 
     </s:layout-component>
