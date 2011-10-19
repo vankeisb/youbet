@@ -63,13 +63,95 @@ class Bet {
                 row.choice = choice
                 row.userBet = choice.getUserValue(u)
                 row.total = choice.getTotal()
+                row.userWin = computeUserWin(choice, u)
                 result << row
             }
         }
         return result
     }
 
+    def computeUserWin(Choice choice, User user) {
+
+        println "computing user win for choice $choice.title and user $user.username"
+
+        def choiceValues = choice.userValues
+        def totalChoice = 0
+        choiceValues.each { u,v ->
+            totalChoice += v
+        }
+
+        println "choice values : $choiceValues"
+        println "total choice : $totalChoice"
+
+        def userAmountGoodChoice = choiceValues[user]
+        if (userAmountGoodChoice==null) {
+            userAmountGoodChoice = 0
+        }
+
+        println "user amount on choice : $userAmountGoodChoice"
+
+        def ratio = userAmountGoodChoice / totalChoice
+
+        println "ratio = $ratio"
+
+        // you win what you bet at least !
+        def win = userAmountGoodChoice
+
+        // plus the other choices' values, ceiled at what you've bet
+        for (Choice c : choices) {
+            if (c!=choice) {
+                println "handling choice $c"
+                // loosing choice
+                def uv = c.userValues
+                for (User u : uv.keySet()) {
+                    def v = uv[u]
+                    println "user $u, value $v"
+                    def ceiledValue = Math.min(userAmountGoodChoice, v)
+                    println "ceiled : $ceiledValue"
+                    def valueForUser = ceiledValue * ratio
+                    println "value for user : $valueForUser"
+                    win += valueForUser
+                }
+            }
+        }
+
+        def rounded = Math.round(win)
+        println "user win = $win, rounded = $rounded"
+        return rounded
+    }
+
+    Choice getChoice(String title) {
+        for (Choice c : choices) {
+            if (c.title==title) {
+                return c
+            }
+        }
+        return null
+    }
 
 
+    boolean equals(o) {
+        if (this.is(o)) return true;
+        if (getClass() != o.class) return false;
+
+        Bet bet = (Bet) o;
+
+        if (id != bet.id) return false;
+
+        return true;
+    }
+
+    int hashCode() {
+        return (id != null ? id.hashCode() : 0);
+    }
+
+    public String toString ( ) {
+    final StringBuilder sb = new StringBuilder ( ) ;
+    sb . append ( "Bet" ) ;
+    sb . append ( "{id=" ) . append ( id ) ;
+    sb . append ( ", title='" ) . append ( title ) . append ( '\'' ) ;
+    sb . append ( '}' ) ;
+    return sb . toString ( ) ;
+    }
 
 }

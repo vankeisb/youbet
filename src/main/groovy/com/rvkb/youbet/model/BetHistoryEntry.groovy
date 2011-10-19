@@ -24,4 +24,6 @@ abstract class BetHistoryEntry {
 
     abstract String getMessage()
 
+
+
 }
