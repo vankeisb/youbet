@@ -100,6 +100,7 @@
 
         var refreshChoices = function(choicesAndAmounts) {
             if (choicesAndAmounts) {
+                // choices table
                 for (var i = 0; i < choicesAndAmounts.items.length; i++) {
                     var row = choicesAndAmounts.items[i];
                     if (!choicesAdded) {
@@ -119,6 +120,10 @@
                     }
                 }
                 choicesAdded = true;
+
+                // refresh history
+                dojo.publish("/history/${bet.id}", []);
+
             } else {
                 cli.invokeFacet({
                     facetName: 'choicesAndAmounts',
@@ -170,7 +175,7 @@
             <th>Your bet</th>
             <th>&nbsp;</th>
             <th>All bets</th>
-            <th>Choice result</th>
+            <th>You win</th>
         </tr>
         </thead>
         <tbody id="choicesBody">

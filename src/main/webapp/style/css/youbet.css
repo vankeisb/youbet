@@ -31,6 +31,8 @@ td.numCell {
 
 .betChoices th {
     font-weight: bold;
+    padding-left: 4px;
+    padding-right: 4px;
 }
 
 .betChoices tr {
