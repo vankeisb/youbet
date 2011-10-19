@@ -35,7 +35,7 @@ class Choice {
     Integer getUserValue(User user) {
         def v = 0
         for (Answer a : answers) {
-            if (a.user.equals(user)) {
+            if (a.user == user) {
                 v += a.amount
             }
         }

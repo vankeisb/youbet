@@ -73,6 +73,16 @@
             newTr.appendChild(totalTd);
             dojo.addClass(totalTd, 'numCell');
 
+            var resultTd = document.createElement('td');
+            resultTd.setAttribute("id", "result_" + choiceId);
+            if (row.userReport && row.userReport.win) {
+                resultTd.innerHTML = row.userReport.win;
+            } else {
+                resultTd.innerHTML = "N/A"
+            }
+            newTr.appendChild(resultTd);
+            dojo.addClass(resultTd, 'numCell');
+
             return newTr;
         };
 
@@ -100,9 +110,12 @@
                         var choiceTitle = row.choice.title;
                         var userBet = row.userBet;
                         var total = row.total;
+                        var win = row.userReport ? row.userReport.win : "N/A";
+                        win = win || "N/A";
                         dojo.byId('title_' + choiceId).innerHTML = choiceTitle;
                         dojo.byId('userBet_' + choiceId).innerHTML = userBet;
                         dojo.byId('total_' + choiceId).innerHTML = total;
+                        dojo.byId('result_' + choiceId).innerHTML = win;
                     }
                 }
                 choicesAdded = true;
@@ -157,6 +170,7 @@
             <th>Your bet</th>
             <th>&nbsp;</th>
             <th>All bets</th>
+            <th>Choice result</th>
         </tr>
         </thead>
         <tbody id="choicesBody">

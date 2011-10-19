@@ -102,5 +102,16 @@ class UserWinTest extends TestCase {
         assert 20 == b.bet.computeUserWin(b.cb, b.alex)
     }
 
+    void testUserWinNoWin() {
+        def b = createBet(10, 0, 10, 0)
+
+        assert 10 == b.bet.computeUserWin(b.ca, b.remi)
+        assert null == b.bet.computeUserWin(b.cb, b.remi)
+
+        assert 10 == b.bet.computeUserWin(b.ca, b.alex)
+        assert null == b.bet.computeUserWin(b.cb, b.alex)
+    }
+
+
 
 }

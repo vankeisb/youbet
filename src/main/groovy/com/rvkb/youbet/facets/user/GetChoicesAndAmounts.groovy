@@ -29,7 +29,12 @@ class GetChoicesAndAmounts extends BaseResolutionFacet {
             jc.put('title', c.title)
             jRow.put('userBet', row.userBet)
             jRow.put('total', row.total)
-            jRow.put('userWin', row.userWin)
+            if (row.userReport!=null) {
+                JSONObject userReport = new JSONObject()
+                jRow.put('userReport', userReport)
+                userReport.put('win', row.userReport.win)
+                userReport.put('total', row.userReport.total)
+            }
             items.put(jRow)
         }
         return new StreamingResolution('text/json', result.toString())

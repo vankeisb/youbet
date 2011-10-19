@@ -63,7 +63,7 @@ class Bet {
                 row.choice = choice
                 row.userBet = choice.getUserValue(u)
                 row.total = choice.getTotal()
-                row.userWin = computeUserWin(choice, u)
+                row.userReport = computeUserReport(choice, u)
                 result << row
             }
         }
@@ -90,6 +90,9 @@ class Bet {
 
         println "user amount on choice : $userAmountGoodChoice"
 
+        if (totalChoice==0) {
+            return null
+        }
         def ratio = userAmountGoodChoice / totalChoice
 
         println "ratio = $ratio"
@@ -118,6 +121,18 @@ class Bet {
         def rounded = Math.round(win)
         println "user win = $win, rounded = $rounded"
         return rounded
+    }
+
+    def computeUserReport(Choice choice, User user) {
+        def userWin = computeUserWin(choice, user)
+        def allBetValue = 0
+        choices.each { c ->
+            allBetValue += c.getUserValue(user)
+        }
+        return [
+          win:userWin,
+          total:allBetValue
+        ]
     }
 
     Choice getChoice(String title) {
