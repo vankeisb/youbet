@@ -3,6 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="bet" value="${renderPropertyValue.owningObject}"/>
 <script type="text/javascript">
+    dojo.require("dijit.TitlePane");
     dojo.addOnLoad(function() {
         var cli = new woko.rpc.Client({baseUrl:"${pageContext.request.contextPath}"});
         dojo.subscribe("/history/${bet.id}", function() {
@@ -20,8 +21,9 @@
         });
     });
 </script>
-<h2>Bet history</h2>
-<div id="betHistory">
-    <w:includeFacet facetName="betHistoryFragment" targetObject="${bet}"/>
+<div dojoType="dijit.TitlePane" title="Bet history">
+    <div id="betHistory">
+        <w:includeFacet facetName="betHistoryFragment" targetObject="${bet}"/>
+    </div>
 </div>
 

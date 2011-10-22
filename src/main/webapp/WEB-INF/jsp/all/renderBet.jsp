@@ -8,7 +8,7 @@
     timer.onTick = function() {
         dojo.publish("/choices/${o.id}", []);
     };
-    timer.start();
+//    timer.start();
 </script>
 <div class="wokoObject">
     <w:includeFacet targetObject="${o}" facetName="renderLinks"/>

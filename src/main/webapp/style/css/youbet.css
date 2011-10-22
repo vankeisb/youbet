@@ -20,6 +20,10 @@ body {
   border: none;
 }
 
+.wokoProperty {
+    padding-bottom: 8px;
+}
+
 td.numCell {
     text-align: right;
 }
