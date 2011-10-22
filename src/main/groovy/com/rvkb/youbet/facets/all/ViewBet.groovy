@@ -7,7 +7,7 @@ import net.sourceforge.jfacets.annotations.FacetKeyList
 
 @FacetKeyList(
     keys= [
-        @FacetKey(name="view", profileId="all", targetObjectType=Bet.class),
+        @FacetKey(name="view", profileId="user", targetObjectType=Bet.class),
         @FacetKey(name="view", profileId="guest", targetObjectType=Bet.class)
     ]
 )

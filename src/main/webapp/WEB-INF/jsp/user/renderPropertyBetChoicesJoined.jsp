@@ -75,24 +75,34 @@
 
             var resultTd = document.createElement('td');
             resultTd.setAttribute("id", "result_" + choiceId);
-            if (row.userReport) {
-                var win = (row.userReport.win || 0) - row.userReport.total;
-                var cssClass = "zero";
-                if (win<0) {
-                    cssClass = "negative";
-                } else if (win>0) {
-                    cssClass = "positive"
-                }
-                dojo.addClass(resultTd, cssClass);
-                resultTd.innerHTML = win;
-            } else {
-                resultTd.innerHTML = "N/A"
-            }
+
+            computeResultValueAndStyle(resultTd, row.userReport);
+
             newTr.appendChild(resultTd);
 
             dojo.addClass(resultTd, 'numCell');
 
             return newTr;
+        };
+
+        var computeResultValueAndStyle = function(resultTd, userReport) {
+            var innerH = "N/A";
+            var cssClass = "zero";
+            if (userReport) {
+                var win = userReport.win;
+                if (win!=undefined) {
+                    win = win - userReport.total;
+                    if (win<0) {
+                        cssClass = "negative";
+                    } else if (win>0) {
+                        cssClass = "positive"
+                    }
+                    innerH = win.toString();
+                }
+            }
+            dojo.removeClass(resultTd, ["negative","positive","zero"]);
+            resultTd.innerHTML = innerH;
+            dojo.addClass(resultTd, cssClass);
         };
 
         var onTbFocused = function(tb) {
@@ -120,19 +130,11 @@
                         var choiceTitle = row.choice.title;
                         var userBet = row.userBet;
                         var total = row.total;
-                        var win = row.userReport ? (row.userReport.win || 0) - row.userReport.total  : "N/A";
                         dojo.byId('title_' + choiceId).innerHTML = choiceTitle;
                         dojo.byId('userBet_' + choiceId).innerHTML = userBet;
                         dojo.byId('total_' + choiceId).innerHTML = total;
                         var resTd = dojo.byId('result_' + choiceId);
-                        resTd.innerHTML = win;
-                        var cssClass = "zero";
-                        if (win<0) {
-                            cssClass = "negative";
-                        } else if (win>0) {
-                            cssClass = "positive"
-                        }
-                        dojo.addClass(resTd, cssClass);
+                        computeResultValueAndStyle(resTd,row.userReport);
                     }
                 }
                 choicesAdded = true;

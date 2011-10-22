@@ -18,11 +18,11 @@
                 }
             });
         });
-        dojo.publish("/history/${bet.id}", []);
+//        dojo.publish("/history/${bet.id}", []);
     });
 </script>
 <h2>Bet history</h2>
 <div id="betHistory">
-    Loading history...
+    <w:includeFacet facetName="betHistoryFragment" targetObject="${bet}"/>
 </div>
 

@@ -2,7 +2,7 @@
 <c:set var="choices" value="${renderPropertyValue.propertyValue}"/>
 <c:set var="bet" value="${renderPropertyValue.bet}"/>
 <div class="betChoices">
-    <table cellspacing="8">
+    <table cellpadding="8" cellspacing="0">
         <thead>
         <tr>
             <th>&nbsp;</th>
