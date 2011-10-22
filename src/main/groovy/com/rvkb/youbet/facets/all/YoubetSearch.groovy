@@ -22,4 +22,10 @@ class YoubetSearch extends SearchImpl {
         }
     }
 
+    @Override
+    String getPath() {
+        '/WEB-INF/jsp/all/search.jsp'
+    }
+
+
 }
