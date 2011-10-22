@@ -22,36 +22,44 @@ class UserWinTest extends TestCase {
         bet.addChoice("a").addChoice("b")
         Choice ca = bet.getChoice("a")
         ca.id = 1
-        ca.addToAnswers(
-          new Answer([
-            id:1,
-            user: remi,
-            amount: amountRemiA
-          ])
-        )
-        ca.addToAnswers(
-          new Answer([
-            id:2,
-            user: alex,
-            amount: amountAlexA
-          ])
-        )
+        if (amountRemiA>0) {
+            ca.addToAnswers(
+              new Answer([
+                id:1,
+                user: remi,
+                amount: amountRemiA
+              ])
+            )
+        }
+        if (amountAlexA>0) {
+            ca.addToAnswers(
+              new Answer([
+                id:2,
+                user: alex,
+                amount: amountAlexA
+              ])
+            )
+        }
         Choice cb = bet.getChoice("b")
         cb.id = 2
-        cb.addToAnswers(
-          new Answer([
-            id:3,
-            user: alex,
-            amount: amountAlexB
-          ])
-        )
-        cb.addToAnswers(
-          new Answer([
-            id:4,
-            user: remi,
-            amount: amountRemiB
-          ])
-        )
+        if (amountAlexB>0) {
+            cb.addToAnswers(
+              new Answer([
+                id:3,
+                user: alex,
+                amount: amountAlexB
+              ])
+            )
+        }
+        if (amountRemiB>0) {
+            cb.addToAnswers(
+              new Answer([
+                id:4,
+                user: remi,
+                amount: amountRemiB
+              ])
+            )
+        }
 
         return [
           remi:remi,
@@ -110,6 +118,15 @@ class UserWinTest extends TestCase {
 
         assert 10 == b.bet.computeUserWin(b.ca, b.alex)
         assert null == b.bet.computeUserWin(b.cb, b.alex)
+    }
+
+    void testUserReportAloneNoWinNoLoose() {
+        def b = createBet(100, 0, 0, 0)
+        def report = b.bet.computeUserReport(b.ca, b.remi)
+        assert report.win == 100
+        assert report.total == 100
+
+        assert null == b.bet.computeUserWin(b.cb, b.remi)
     }
 
 
