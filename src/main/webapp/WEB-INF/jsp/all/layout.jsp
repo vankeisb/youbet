@@ -33,8 +33,7 @@
                         </a>
                         <div id="searchBox">
                             <s:form action="/search">
-                                <input type="text" name="facet.query" data-dojo-type="dijit.form.TextBox"
-                                    data-dojo-props="trim:true"/>
+                                <s:text name="facet.query" class="dojoLike"/>
                                 <button data-dojo-type="dijit.form.Button" type="submit" name="search">
                                     search
                                     <script type="dojo/method" data-dojo-event="onClick" data-dojo-args="evt">

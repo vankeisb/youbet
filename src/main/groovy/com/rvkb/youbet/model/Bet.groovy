@@ -10,16 +10,24 @@ import javax.persistence.CascadeType
 import javax.persistence.ManyToOne
 import javax.persistence.ManyToMany
 import javax.persistence.OrderBy
+import org.compass.annotations.Searchable
+import org.compass.annotations.SearchableId
+import org.compass.annotations.SearchableProperty
+import org.compass.annotations.SearchableComponent
 
 @Entity
+@Searchable
 class Bet {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
+    @SearchableId
     Long id
 
+    @SearchableProperty(boost=2.0f)
     String title
 
+    @SearchableProperty
     String description
 
     Boolean published = false
@@ -30,6 +38,7 @@ class Bet {
     User createdBy
 
     @OneToMany(mappedBy='bet', fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+    @SearchableComponent
     List<Choice> choices
 
     @ManyToMany(fetch=FetchType.LAZY)
