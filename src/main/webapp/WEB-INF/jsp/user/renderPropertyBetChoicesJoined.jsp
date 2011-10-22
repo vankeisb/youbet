@@ -75,12 +75,21 @@
 
             var resultTd = document.createElement('td');
             resultTd.setAttribute("id", "result_" + choiceId);
-            if (row.userReport && row.userReport.win) {
-                resultTd.innerHTML = row.userReport.win;
+            if (row.userReport) {
+                var win = (row.userReport.win || 0) - row.userReport.total;
+                var cssClass = "zero";
+                if (win<0) {
+                    cssClass = "negative";
+                } else if (win>0) {
+                    cssClass = "positive"
+                }
+                dojo.addClass(resultTd, cssClass);
+                resultTd.innerHTML = win;
             } else {
                 resultTd.innerHTML = "N/A"
             }
             newTr.appendChild(resultTd);
+
             dojo.addClass(resultTd, 'numCell');
 
             return newTr;
@@ -111,12 +120,19 @@
                         var choiceTitle = row.choice.title;
                         var userBet = row.userBet;
                         var total = row.total;
-                        var win = row.userReport ? row.userReport.win : "N/A";
-                        win = win || "N/A";
+                        var win = row.userReport ? (row.userReport.win || 0) - row.userReport.total  : "N/A";
                         dojo.byId('title_' + choiceId).innerHTML = choiceTitle;
                         dojo.byId('userBet_' + choiceId).innerHTML = userBet;
                         dojo.byId('total_' + choiceId).innerHTML = total;
-                        dojo.byId('result_' + choiceId).innerHTML = win;
+                        var resTd = dojo.byId('result_' + choiceId);
+                        resTd.innerHTML = win;
+                        var cssClass = "zero";
+                        if (win<0) {
+                            cssClass = "negative";
+                        } else if (win>0) {
+                            cssClass = "positive"
+                        }
+                        dojo.addClass(resTd, cssClass);
                     }
                 }
                 choicesAdded = true;

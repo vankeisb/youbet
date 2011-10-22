@@ -184,7 +184,7 @@ ul.wokoObjectLinks  {
 }
 
 .wokoObject {
-    border: 1px solid #d3d3d3;
+    border: none;
     -moz-border-radius: 10px;
     padding-left: 10px;
     padding-right: 10px;
@@ -237,4 +237,20 @@ input.dojoLike:hover {
 
 input.dojoLike:focus {
     border: 1px solid #769DC0;
+}
+
+.negative {
+    color:red;
+}
+
+.positive {
+    color:#008000;
+}
+
+.zero {
+    color: black;
+}
+
+.wokoObjectTitle {
+    color: #007020;
 }

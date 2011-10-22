@@ -316,7 +316,7 @@
 
         <div class="wokoObject">
             <ul class="wokoObjectLinks">
-                    <li><a class="close" href="${pageContext.request.contextPath}/view/Bet/1">Cancel edit</a></li>
+                    <li><a class="close" href="${pageContext.request.contextPath}/view/Bet/${bet.id}">Cancel edit</a></li>
             </ul>
             <c:choose>
                 <c:when test="${bet==null}">
