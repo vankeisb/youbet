@@ -28,6 +28,10 @@ td.numCell {
     padding-right: 5px;
 }
 
+.betChoices {
+    padding: 8px;
+}
+
 .betChoices td {
     padding: 4px;
     border-bottom: 1px solid #d3d3d3;

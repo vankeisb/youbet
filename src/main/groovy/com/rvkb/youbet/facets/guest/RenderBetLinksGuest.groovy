@@ -17,7 +17,7 @@ class RenderBetLinksGuest extends RenderLinksImpl {
     @Override
     List<Link> getLinks() {
         def links = []
-        if (bet.published && currentUser!=null) {
+        if (bet.published) {
             links << createJoinLink()
         }
         return links
