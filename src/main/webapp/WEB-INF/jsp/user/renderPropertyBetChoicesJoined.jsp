@@ -180,6 +180,11 @@
 
         // initial population
         refreshChoices();
+
+        // sub to the choices channel
+        dojo.subscribe("/choices/${bet.id}", function() {
+            refreshChoices();
+        });
     });
 
 </script>

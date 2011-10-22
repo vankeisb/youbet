@@ -18,7 +18,6 @@
                 }
             });
         });
-//        dojo.publish("/history/${bet.id}", []);
     });
 </script>
 <h2>Bet history</h2>
