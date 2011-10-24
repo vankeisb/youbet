@@ -23,7 +23,7 @@ class RenderBetLinks extends RenderBetLinksGuest {
         Bet bet = facetContext.targetObject
         if (checkTargetBetIsOwnedByCurrentUser(bet)) {
             def linkText = "Edit"
-            if (bet.published) {
+            if (bet.published && bet.closable) {
                 linkText = "Close the bet"
             }
             // user is owner, allow edit

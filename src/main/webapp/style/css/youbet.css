@@ -169,11 +169,12 @@ ul.wokoObjectLinks  {
     padding-bottom: 8px;
 }
 
-#wokoMessages {
+#wokoMessages, .messages {
     margin: 6px;
     padding: 8px;
     border: 1px solid #BBFFBB;
     background-color: #DDFFDD;
+    font-size: 12px;
 }
 
 #wokoMessages li {

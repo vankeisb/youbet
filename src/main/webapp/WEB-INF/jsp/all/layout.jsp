@@ -32,12 +32,13 @@
                             <y:logo wrapperClass="headerLogo"/>
                         </a>
                         <div id="searchBox">
-                            <s:form action="/search">
+                            <s:form id="searchForm" action="/search">
                                 <s:text name="facet.query" class="dojoLike"/>
                                 <button data-dojo-type="dijit.form.Button" type="submit" name="search">
                                     search
                                     <script type="dojo/method" data-dojo-event="onClick" data-dojo-args="evt">
                                         this.setAttribute('disabled', true);
+                                        dojo.byId("searchForm").submit();
                                     </script>
                                 </button>
                             </s:form>

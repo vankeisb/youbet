@@ -153,6 +153,24 @@ class Bet {
         return null
     }
 
+    boolean isClosable() {
+        // can close if there are bets from at least 2 users
+        def unames = []
+        for (Choice c : choices) {
+            for (Answer a : c.answers) {
+                def uname = a.user.username
+                if (!unames.contains(uname) && a.amount>0) {
+                    unames << uname
+                }
+                if (unames.size()>=2) {
+                    return true
+                }
+            }
+        }
+        return false
+    }
+
+
 
     boolean equals(o) {
         if (this.is(o)) return true;
