@@ -189,20 +189,18 @@
 
 </script>
 
-<div dojoType="dijit.TitlePane" title="Choices & amounts">
-    <div class="betChoices">
-        <table cellpadding="8" cellspacing="0">
-            <thead>
-            <tr>
-                <th>&nbsp;</th>
-                <th>Your bet</th>
-                <th>&nbsp;</th>
-                <th>All bets</th>
-                <th>You win</th>
-            </tr>
-            </thead>
-            <tbody id="choicesBody">
-            </tbody>
-        </table>
-    </div>
+<div class="betChoices">
+    <table cellpadding="8" cellspacing="0">
+        <thead>
+        <tr>
+            <th>&nbsp;</th>
+            <th>Your bet</th>
+            <th>&nbsp;</th>
+            <th>All bets</th>
+            <th>You win</th>
+        </tr>
+        </thead>
+        <tbody id="choicesBody">
+        </tbody>
+    </table>
 </div>

@@ -24,9 +24,6 @@ body {
     padding-bottom: 8px;
 }
 
-td.numCell {
-    text-align: right;
-}
 
 #betHistory td {
     padding-right: 5px;
@@ -34,16 +31,21 @@ td.numCell {
 
 .betChoices {
     padding: 8px;
+    background: white;
+    border: 1px thin #f5f5f5;
+    -moz-border-radius: 6px;
 }
 
 .betChoices td {
     padding: 4px;
-    border-bottom: 1px solid #d3d3d3;
 }
 
+.betChoices td.numCell {
+    text-align: right;
+    padding-left: 20px;
+}
 
 .betChoices th {
-    border-bottom: 1px solid #d3d3d3;
     font-weight: bold;
     padding-left: 4px;
     padding-right: 4px;
@@ -84,35 +86,14 @@ td.numCell {
     top: 8px;
 }
 
-#navbar {
-    height: 22px;
-    padding: 4px;
-    margin-bottom: 6px;
-    vertical-align: middle;
-}
-
-#navbar a {
-    text-decoration: none;
-    color: black;
-    padding-left: 5px;
-    padding-right: 5px;
-    padding-top: 3px;
-    padding-bottom: 3px;
-}
-
 #logo a {
     text-decoration: none;
 }
 
-#navbar li {
-    border: 1px solid #ddd;
-    padding: 4px;
-    -moz-border-radius: 6px;
-
-    background: #fff;
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff', endColorstr='#ccc'); /*  for IE */
-    background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ccc));  /* for webkit browsers */
-    background: -moz-linear-gradient(top,  #fff, #ccc);  /* for firefox 3.6+ */
+#logo span.dijitButton {
+    position: absolute;
+    top: 14px;
+    left : 180px;
 }
 
 #authInfo {
@@ -120,27 +101,6 @@ td.numCell {
     top: 44px;
     right: 6px;
     font-size: 12px;
-}
-
-#nbar {
-    float: left;
-    height: 24px;
-    font-size: 16px;
-}
-
-#nbar li {
-    display: inline;
-    padding-right: 4px;
-}
-
-#nbar ul {
-    margin: 0;
-    padding-left: 0px;
-}
-
-
-#nbar li {
-    display: inline;
 }
 
 .wokoObjectLinks {
@@ -259,4 +219,19 @@ input.dojoLike:focus {
 
 .wokoObjectTitle {
     color: #007020;
+}
+
+.badChoice {
+    background-color: #ffdddd;
+    font-style: italic;
+    color: #808080;
+}
+
+.goodChoice {
+    background-color: #ccffcc;
+}
+
+.goodChoice .positive {
+    font-weight: bold;
+    font-size: 1.2em;
 }
