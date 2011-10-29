@@ -14,9 +14,15 @@
     <w:includeFacet targetObject="${o}" facetName="renderLinks"/>
     <w:includeFacet targetObject="${o}" facetName="renderTitle"/>
     <c:if test="${!o.published}">
-        <p>
+        <div class="messages">
             This bet is not published yet.
-        </p>
+        </div>
+    </c:if>
+    <c:if test="${o.closed}">
+        <div class="messages">
+            This bet is closed. The result of the bet is displayed. You can't
+            modify this bet any more.
+        </div>
     </c:if>
     <w:includeFacet targetObject="${o}" facetName="renderProperties"/>
 </div

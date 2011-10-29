@@ -32,8 +32,6 @@ class Bet {
 
     Boolean published = false
 
-    Boolean closed = false
-
     @ManyToOne(fetch=FetchType.LAZY)
     User createdBy
 
@@ -47,6 +45,15 @@ class Bet {
     @OneToMany(mappedBy='bet', fetch=FetchType.LAZY, cascade=CascadeType.REMOVE)
     @OrderBy("creationDate DESC")
     List<BetHistoryEntry> history
+
+    Boolean getClosed() {
+        for (Choice c : choices) {
+            if (c.goodChoice) {
+                return true
+            }
+        }
+        return false
+    }
 
     Bet addChoice(String label) {
         Choice c = new Choice([title:label, bet:this])
@@ -154,6 +161,9 @@ class Bet {
     }
 
     boolean isClosable() {
+        if (!published || closed) {
+            return false
+        }
         // can close if there are bets from at least 2 users
         def unames = []
         for (Choice c : choices) {
@@ -169,8 +179,6 @@ class Bet {
         }
         return false
     }
-
-
 
     boolean equals(o) {
         if (this.is(o)) return true;

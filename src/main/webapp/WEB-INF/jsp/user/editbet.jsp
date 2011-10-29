@@ -238,6 +238,12 @@
                 };
             </c:if>
 
+            <c:if test="${bet!=null && bet.closable}">
+                var closeBet = function() {
+                    window.location = "${pageContext.request.contextPath}/close/Bet/${bet.id}" ;
+                };
+            </c:if>
+
             dojo.addOnLoad(function() {
                 // disable buttons
                 dijit.byId("save").setAttribute("disabled", true);
@@ -434,7 +440,7 @@
             <button id="close" data-dojo-type="dijit.form.Button" type="button">
                 Close
                 <script type="dojo/method" data-dojo-event="onClick" data-dojo-args="evt">
-                    close();
+                    closeBet();
                 </script>
             </button>
             <div data-dojo-type="dijit.Tooltip" data-dojo-props="connectId:'close',position:['above']">

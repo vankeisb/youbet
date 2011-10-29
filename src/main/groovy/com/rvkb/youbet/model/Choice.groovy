@@ -29,6 +29,8 @@ class Choice {
     @OneToMany(mappedBy="choice")
     Set<Answer> answers
 
+    Boolean goodChoice
+
     Integer getTotal() {
         def total = 0
         if (answers) {
