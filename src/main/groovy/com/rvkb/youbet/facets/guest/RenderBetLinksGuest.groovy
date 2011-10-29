@@ -29,5 +29,9 @@ class RenderBetLinksGuest extends RenderLinksImpl {
         return l
     }
 
+    @Override
+    String getPath() {
+        '/WEB-INF/jsp/all/renderLinks.jsp'
+    }
 
 }

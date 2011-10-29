@@ -1,4 +1,4 @@
-package com.rvkb.youbet.facets.all
+package com.rvkb.youbet.facets.user
 
 import com.rvkb.youbet.model.Bet
 import net.sourceforge.jfacets.annotations.FacetKey
@@ -8,12 +8,7 @@ import com.rvkb.youbet.model.User
 import com.rvkb.youbet.facets.user.FacetCategory
 import net.sourceforge.jfacets.annotations.FacetKeyList
 
-@FacetKeyList(
-    keys=[
-        @FacetKey(name="renderLinks", profileId="guest", targetObjectType=Bet.class),
-        @FacetKey(name="renderLinks", profileId="user", targetObjectType=Bet.class)
-    ]
-)
+@FacetKey(name="renderLinks", profileId="user", targetObjectType=Bet.class)
 @Mixin(FacetCategory)
 class RenderBetLinks extends RenderBetLinksGuest {
 
@@ -39,11 +34,5 @@ class RenderBetLinks extends RenderBetLinksGuest {
         }
         return links
     }
-
-    @Override
-    String getPath() {
-        '/WEB-INF/jsp/user/renderLinks.jsp'
-    }
-
 
 }
