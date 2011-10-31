@@ -237,3 +237,16 @@ input.dojoLike:focus {
     font-weight: bold;
     font-size: 1.2em;
 }
+
+.ajaxLoader {
+    background: url('../images/ajax-loader.gif');
+    height: 20px;
+    width: 20px;
+}
+
+.ajaxLoaderBig {
+    background: url('../images/ajax-loader-big.gif');
+    height: 30px;
+    width: 30px;
+}
+

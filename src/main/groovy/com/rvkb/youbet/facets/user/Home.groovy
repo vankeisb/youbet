@@ -5,6 +5,7 @@ import woko.facets.builtin.all.HomeImpl
 import com.rvkb.youbet.model.Bet
 
 @FacetKey(name="home", profileId="user")
+@Mixin(FacetCategory)
 class Home extends HomeImpl {
 
     @Override
@@ -18,6 +19,10 @@ class Home extends HomeImpl {
 
     Collection<Bet> getJoinedBets() {
         return objectStore.getJoinedBets(woko.getUsername(request))
+    }
+
+    Long getCurrentUserId() {
+        return currentUser.id
     }
 
 
