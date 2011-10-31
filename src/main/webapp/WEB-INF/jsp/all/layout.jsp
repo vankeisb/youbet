@@ -31,19 +31,19 @@
                         <a href="${pageContext.request.contextPath}/home">
                             <y:logo wrapperClass="headerLogo"/>
                         </a>
-                        <button class="createBtn" data-dojo-type="dijit.form.Button">
-                            Create a bet !
-                            <script type="dojo/method" data-dojo-event="onClick" data-dojo-args="evt">
-                                this.setAttribute('disabled', true);
-                                window.location = "${pageContext.request.contextPath}/newbet";
-                            </script>
-                        </button>
                     </div>
                     <div id="searchBox">
                         <s:form id="searchForm" action="/search">
+                            <button class="createBtn" data-dojo-type="dijit.form.Button">
+                                Create a bet !
+                                <script type="dojo/method" data-dojo-event="onClick" data-dojo-args="evt">
+                                    this.setAttribute('disabled', true);
+                                    window.location = "${pageContext.request.contextPath}/newbet";
+                                </script>
+                            </button>
                             <s:text name="facet.query" class="dojoLike"/>
                             <button data-dojo-type="dijit.form.Button" type="submit" name="search">
-                                search
+                                Search bets
                                 <script type="dojo/method" data-dojo-event="onClick" data-dojo-args="evt">
                                     this.setAttribute('disabled', true);
                                     dojo.byId("searchForm").submit();
@@ -66,10 +66,10 @@
                         </span>
                     </c:if>
                 </div>
+                <s:messages/>
+                <s:errors/>
                 <div id="content-wrap">
                     <div id="content">
-                        <s:messages/>
-                        <s:errors/>
                         <s:layout-component name="body"/>
                     </div>
                 </div>

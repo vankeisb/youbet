@@ -130,10 +130,10 @@ ul.wokoObjectLinks  {
 }
 
 #wokoMessages, .messages {
-    margin: 6px;
-    padding: 8px;
-    border: 1px solid #BBFFBB;
+    padding: 4px;
+    border: 1px solid #99ff99;
     background-color: #DDFFDD;
+    color: green;
     font-size: 12px;
 }
 
@@ -172,11 +172,13 @@ ul.wokoObjectLinks  {
 }
 
 .errorsContainer {
-    margin: 6px;
-    padding: 8px;
-    border: 1px solid #990000;
+    padding: 4px;
+    border-top: 1px solid #990000;
+    border-bottom: 1px solid #990000;
     background-color: #ffcccc;
+    color: #660033;
     font-size: 12px;
+    width: 100%;
 }
 
 .errorsContainer ul {
