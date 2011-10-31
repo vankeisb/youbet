@@ -331,42 +331,17 @@
             <c:choose>
                 <c:when test="${bet==null}">
                     <h1 class="wokoObjectTitle">Create bet...</h1>
-                    <p>
-                        You are creating a new bet. Please fill in the details, and save.
-                    </p>
                 </c:when>
                 <c:otherwise>
                     <c:choose>
                         <c:when test="${bet.published}">
                             <w:includeFacet facetName="renderTitle" targetObject="${bet}"/>
-                            <c:choose>
-                                <c:when test="${bet.closable}">
-                                    <div class="messages">
-                                        You can close this bet whenever you want. Make sure
-                                        everyone's ok with it !
-                                    </div>
-                                </c:when>
-                                <c:otherwise>
-                                    <div class="messages">
-                                        This bet has been published, but nobody has yet answered any choice.
-                                        You will be able to close it as soon as at least two people have answered.
-                                    </div>
-                                    <script type="text/javascript">
-                                        dijit.byId('close').setAttribute("disabled", true);
-                                    </script>
-                                </c:otherwise>
-                            </c:choose>
+                            <script type="text/javascript">
+                                dijit.byId('close').setAttribute("disabled", ${bet.closable == false});
+                            </script>
                         </c:when>
                         <c:otherwise>
                             <h1>Edit bet</h1>
-                            <div class="messages">
-                                Editing the bet. You can save as many times as you want. Then, once your bet
-                                is ok, you can publish it so that others can join it, and bet on it.
-                                <br/>
-                                <br/>
-                                <b>IMPORTANT</b> : you won't be able to change your bet once it's published. Make
-                                sure everything is ok before you publish.
-                            </div>
                         </c:otherwise>
                     </c:choose>
                 </c:otherwise>
