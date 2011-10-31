@@ -65,10 +65,10 @@ class Bet {
     }
 
     def joinUser(User user) {
-        if (joinedUsers==null) {
-            joinedUsers = []
+        if (getJoinedUsers()==null) {
+            setJoinedUsers(new HashSet<User>())
         }
-        joinedUsers << user
+        getJoinedUsers().add(user)
     }
 
     def getChoicesAndAmounts(User u) {
@@ -181,14 +181,13 @@ class Bet {
     }
 
     boolean equals(o) {
-        if (this.is(o)) return true;
-        if (getClass() != o.class) return false;
-
-        Bet bet = (Bet) o;
-
-        if (id != bet.id) return false;
-
-        return true;
+        if (this.is(o)) {
+            return true
+        }
+        if (getClass() != o.class) {
+            return false
+        }
+        return id != o.id
     }
 
     int hashCode() {

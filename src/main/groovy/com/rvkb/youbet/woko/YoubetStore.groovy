@@ -89,11 +89,12 @@ class YoubetStore extends HibernateCompassStore {
             return false
         }
         bet.joinUser(user)
+        save(bet)
         if (user.bets==null) {
             user.bets=[]
         }
         user.bets << bet
-        save(bet)
+        save(user)
 
         BetHistoryEntry e = new BetHistoryEntryUserJoined([
           bet:bet,

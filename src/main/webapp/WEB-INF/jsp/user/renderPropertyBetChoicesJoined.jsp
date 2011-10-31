@@ -3,6 +3,7 @@
 <script type="text/javascript">
     dojo.require("dijit.form.NumberTextBox");
     dojo.require("dijit.form.Button");
+    dojo.require("dojox.timing");
 
     dojo.addOnLoad(function() {
 
@@ -185,6 +186,14 @@
         dojo.subscribe("/choices/${bet.id}", function() {
             refreshChoices();
         });
+
+        // publish to channel infinitely
+        var timer = new dojox.timing.Timer(2000);
+        timer.onTick = function() {
+            dojo.publish("/choices/${bet.id}", []);
+        };
+        timer.start();
+
     });
 
 </script>

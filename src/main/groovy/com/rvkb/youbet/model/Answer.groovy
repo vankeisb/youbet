@@ -25,14 +25,12 @@ class Answer {
     Date createdOn = new Date()
 
     boolean equals(o) {
-        if (this.is(o)) return true;
-        if (getClass() != o.class) return false;
+        if (this.is(o))
+            return true
+        if (getClass() != o.class)
+            return false
 
-        Answer answer = (Answer) o;
-
-        if (id != answer.id) return false;
-
-        return true;
+         return id == o.id
     }
 
     int hashCode() {

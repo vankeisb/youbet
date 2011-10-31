@@ -13,6 +13,11 @@ class RenderPropertyBetChoicesUser extends RenderPropertyBetChoicesGuest {
     String getPath() {
         // check if the user has joined the bet
         if (bet.joinedUsers.contains(getCurrentUser()) || checkTargetBetIsOwnedByCurrentUser(bet)) {
+            // check if the bet has been published
+            if (!bet.published) {
+                return '/WEB-INF/jsp/guest/renderPropertyBetChoices.jsp'
+            }
+            // check if it's closed
             return bet.closed ?
                 '/WEB-INF/jsp/user/renderPropertyBetChoicesClosed.jsp' :
                 '/WEB-INF/jsp/user/renderPropertyBetChoicesJoined.jsp'
@@ -22,8 +27,7 @@ class RenderPropertyBetChoicesUser extends RenderPropertyBetChoicesGuest {
     }
 
     def getChoicesAndAmounts() {
-        def u = currentUser
-        return bet.getChoicesAndAmounts(u)
+        return bet.getChoicesAndAmounts(currentUser)
     }
 
 }

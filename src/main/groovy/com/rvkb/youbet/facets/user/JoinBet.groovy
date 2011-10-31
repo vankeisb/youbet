@@ -15,6 +15,11 @@ class JoinBet extends BaseResolutionFacet {
 
     Resolution getResolution(ActionBeanContext abc) {
         Bet bet = facetContext.targetObject
+        // avoid hibernate lazy loading problem
+        // TODO find better solution to this !
+        bet.choices.each {
+            it.answers.size()
+        }
         User user = currentUser
         if (store.joinBet(user, bet)) {
             abc.messages.add(new SimpleMessage("You have joined the bet."))

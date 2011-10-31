@@ -10,6 +10,9 @@ import org.compass.annotations.Searchable
 import org.compass.annotations.SearchableId
 import org.compass.annotations.SearchableProperty
 import org.compass.annotations.SearchableParent
+import org.hibernate.engine.Cascade
+import javax.persistence.CascadeType
+import javax.persistence.FetchType
 
 @Entity
 @Searchable
@@ -26,7 +29,7 @@ class Choice {
     @ManyToOne
     Bet bet
 
-    @OneToMany(mappedBy="choice")
+    @OneToMany(mappedBy="choice", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
     Set<Answer> answers
 
     Boolean goodChoice
@@ -74,12 +77,12 @@ class Choice {
 
 
     boolean equals(o) {
-        if (this.is(o)) return true;
-        if (getClass() != o.class) return false;
+        if (this.is(o))
+            return true;
+        if (getClass() != o.class)
+            return false;
 
-        Choice choice = (Choice) o;
-
-        return id == choice.id;
+        return id == o.id;
     }
 
     int hashCode() {
