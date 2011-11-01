@@ -107,6 +107,7 @@ class YoubetStore extends HibernateCompassStore {
     List<BetHistoryEntry> getHistory () {
         session.createCriteria(BetHistoryEntry.class).
           addOrder(Order.desc("creationDate")).
+          setMaxResults(50).
           list()
     }
 

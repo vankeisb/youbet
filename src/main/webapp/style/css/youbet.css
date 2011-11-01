@@ -251,3 +251,18 @@ input.dojoLike:focus {
     margin: 12px;
 }
 
+.prettyDate {
+    padding: 2px;
+}
+
+.activity {
+    margin-left: 8px;
+}
+
+.betOptions {
+    margin-left: 8px;
+}
+
+#betHistoryFragment div {
+    padding-top: 2px;
+}

@@ -187,12 +187,14 @@
             refreshChoices();
         });
 
-        // publish to channel infinitely
-        var timer = new dojox.timing.Timer(2000);
-        timer.onTick = function() {
-            dojo.publish("/choices/${bet.id}", []);
-        };
-        timer.start();
+        <% if (request.getParameter("dontrefresh")!=null) { %>
+            // publish to channel infinitely
+            var timer = new dojox.timing.Timer(2000);
+            timer.onTick = function() {
+                dojo.publish("/choices/${bet.id}", []);
+            };
+            timer.start();
+        <% } %>
 
     });
 
