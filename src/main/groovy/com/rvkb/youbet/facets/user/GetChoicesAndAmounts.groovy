@@ -20,6 +20,9 @@ class GetChoicesAndAmounts extends BaseResolutionFacet {
         JSONObject result = new JSONObject()
         JSONArray items = new JSONArray()
         result.put('items', items)
+        if (bet.closed) {
+            result.put("closed", true)
+        }
         choicesAndAmounts.each { row ->
             JSONObject jRow = new JSONObject()
             Choice c = row.choice

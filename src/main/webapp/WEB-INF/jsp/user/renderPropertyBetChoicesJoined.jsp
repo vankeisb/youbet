@@ -120,6 +120,13 @@
 
         var refreshChoices = function(choicesAndAmounts) {
             if (choicesAndAmounts) {
+
+                if (choicesAndAmounts.closed) {
+                    timer && timer.stop();
+                    window.location = "${pageContext.request.contextPath}/view/Bet/${bet.id}";
+                    return;
+                }
+
                 // choices table
                 for (var i = 0; i < choicesAndAmounts.items.length; i++) {
                     var row = choicesAndAmounts.items[i];

@@ -9,6 +9,8 @@ import com.rvkb.youbet.model.Answer
 import net.sourceforge.stripes.validation.Validate
 import com.rvkb.youbet.woko.GroovyRpcResolutionWrapper
 import net.sourceforge.stripes.action.RedirectResolution
+import com.rvkb.youbet.model.User
+import com.rvkb.youbet.model.Bet
 
 @FacetKey(name="addValue",profileId="user",targetObjectType=Choice.class)
 @Mixin(FacetCategory)
@@ -31,6 +33,26 @@ class AddValueToChoice extends BaseResolutionFacet {
             return choicesAndAmounts.getResolution(abc)
           }
         )
+    }
+
+    @Override
+    boolean matchesTargetObject(Object targetObject) {
+        Choice c = targetObject
+        Bet b = c.bet
+        // check if bet is published
+        if (!b.published) {
+            return false
+        }
+        // or closed...
+        if (b.closed) {
+            return false
+        }
+        // check if user has joined the bet or is the bet owner
+        User u = currentUser
+        if (b.createdBy == u || b?.joinedUsers?.contains(u)) {
+            return true
+        }
+        return false
     }
 
 

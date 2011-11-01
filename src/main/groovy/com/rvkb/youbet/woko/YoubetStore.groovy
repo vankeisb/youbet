@@ -22,6 +22,7 @@ import org.compass.core.CompassHits
 import org.compass.core.CompassHitsOperations
 import org.compass.core.CompassQueryBuilder
 import woko.util.WLogger
+import com.rvkb.youbet.model.BetHistoryEntryClosed
 
 class YoubetStore extends HibernateCompassStore {
 
@@ -102,6 +103,17 @@ class YoubetStore extends HibernateCompassStore {
         ])
         save(e)
         return true
+    }
+
+    void closeBet(Choice choice) {
+        choice.goodChoice = true
+        save(choice)
+
+        BetHistoryEntry e = new BetHistoryEntryClosed([
+          bet: choice.bet,
+          user: choice.bet.createdBy
+        ])
+        save(e)
     }
 
     List<BetHistoryEntry> getHistory () {

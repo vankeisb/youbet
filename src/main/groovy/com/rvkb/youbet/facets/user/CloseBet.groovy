@@ -9,6 +9,8 @@ import net.sourceforge.stripes.action.ForwardResolution
 import com.rvkb.youbet.model.Choice
 import net.sourceforge.stripes.action.RedirectResolution
 import net.sourceforge.stripes.action.SimpleMessage
+import com.rvkb.youbet.model.BetHistoryEntryClosed
+import com.rvkb.youbet.model.BetHistoryEntry
 
 @FacetKey(name="close", profileId="user", targetObjectType=Bet.class)
 @Mixin(FacetCategory)
@@ -21,8 +23,7 @@ class CloseBet extends BaseResolutionFacet {
             return new ForwardResolution('/WEB-INF/jsp/user/closeBet.jsp')
         } else {
             // choice specified, close the bet !
-            choice.goodChoice = true
-            objectStore.save(choice)
+            store.closeBet(choice)
             abc.messages.add(new SimpleMessage("Bet closed."))
             return new RedirectResolution("/view/Bet/${facetContext.targetObject.id}")
         }
