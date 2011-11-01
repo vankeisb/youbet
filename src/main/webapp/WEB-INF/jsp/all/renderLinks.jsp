@@ -3,16 +3,14 @@
 <script type="text/javascript">
     dojo.require("dijit.form.Button");
 </script>
-<ul class="wokoObjectLinks">
+<div class="wokoObjectLinks">
     <c:forEach var="link" items="${renderLinks.links}">
-        <li>
-            <button class="${link.cssClass}" data-dojo-type="dijit.form.Button" type="button">
-                ${link.text}
-                <script type="dojo/method" data-dojo-event="onClick" data-dojo-args="evt">
-                    this.setAttribute('disabled', true);
-                    window.location = "${pageContext.request.contextPath}/${link.href}";
-                </script>
-            </button>
-        </li>
+        <button class="${link.cssClass}" data-dojo-type="dijit.form.Button" type="button">
+            ${link.text}
+            <script type="dojo/method" data-dojo-event="onClick" data-dojo-args="evt">
+                this.setAttribute('disabled', true);
+                window.location = "${pageContext.request.contextPath}/${link.href}";
+            </script>
+        </button>
     </c:forEach>
-</ul>
+</div>

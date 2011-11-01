@@ -8,12 +8,20 @@
 <s:layout-definition>
     <html>
         <head>
-            <title>${layout.appTitle} - ${pageTitle}</title>
+            <c:choose>
+                <c:when test="${not empty pageTitle}">
+                    <title>${layout.appTitle} - ${pageTitle}</title>
+                </c:when>
+                <c:otherwise>
+                    <title>${layout.appTitle}</title>
+                </c:otherwise>
+            </c:choose>
             <c:set var="dojoRoot" value="${pageContext.request.contextPath}/js/dojo-1.6.1"/>
             <script type="text/javascript" src="${dojoRoot}/dojo/dojo.js"
                     djConfig="debugAtAllCosts:true, parseOnLoad:true"></script>
             <link rel="stylesheet" type="text/css" href="${dojoRoot}/dojo/resources/dojo.css">
             <link rel="stylesheet" type="text/css" href="${dojoRoot}/dijit/themes/claro/claro.css" />
+            <%--<link rel="stylesheet" type="text/css" href="${dojoRoot}/dijit/themes/soria/soria.css" />--%>
             <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/style/css/youbet.css" />
             <script type="text/javascript" src="${pageContext.request.contextPath}/woko/js/woko.base.js"></script>
             <script type="text/javascript" src="${pageContext.request.contextPath}/woko/js/woko.rpc.js"></script>

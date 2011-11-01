@@ -187,7 +187,7 @@
             refreshChoices();
         });
 
-        <% if (request.getParameter("dontrefresh")!=null) { %>
+        <% if (request.getParameter("dontrefresh")==null) { %>
             // publish to channel infinitely
             var timer = new dojox.timing.Timer(2000);
             timer.onTick = function() {
@@ -200,7 +200,7 @@
 
 </script>
 
-<div class="betChoices">
+<div class="betChoices" dojoType="dijit.TitlePane" title="Choices & amounts">
     <table cellpadding="8" cellspacing="0">
         <thead>
         <tr>

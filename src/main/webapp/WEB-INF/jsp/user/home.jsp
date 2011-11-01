@@ -7,7 +7,7 @@
 <c:set var="o" value="${actionBean.object}"/>
 <w:facet facetName="layout" targetObject="${o}"/>
 <w:facet targetObject="${o}" facetName="renderTitle"/>
-<s:layout-render name="${layout.layoutPath}" layout="${layout}" pageTitle="Youbet: home">
+<s:layout-render name="${layout.layoutPath}" layout="${layout}">
     <s:layout-component name="body">
         <h1>Welcome to <y:logo/></h1>
 
