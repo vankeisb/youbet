@@ -297,5 +297,9 @@ claro .dijitTabContainerTop-tabs .dijitTabInnerDiv,
 .claro .dijitButton .dijitButtonNode, .claro .dijitDropDownButton .dijitButtonNode, .claro .dijitComboButton .dijitButtonNode, .claro .dijitToggleButton .dijitButtonNode {
   border-radius: 6px 6px 6px 6px;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
-  padding: 4px 4px 4px 4px;
+  padding: 4px;
+}
+
+#editButtons {
+    margin-bottom: 8px;
 }

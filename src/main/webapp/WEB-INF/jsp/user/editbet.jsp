@@ -347,102 +347,104 @@
                 </c:otherwise>
             </c:choose>
 
-            <button id="save" data-dojo-type="dijit.form.Button" type="button">
-                Save
-                <script type="dojo/method" data-dojo-event="onClick" data-dojo-args="evt">
-                    this.setAttribute('disabled', true);
-                    createBet();
-                </script>
-            </button>
-            <div data-dojo-type="dijit.Tooltip" data-dojo-props="connectId:'save',position:['above']">
-                <c:choose>
-                    <c:when test="${bet==null}">
-                        You are creating a new bet. Once you're finished specifying the bet informations,
-                        click the <b>save</b> button.<br/>You can get back to the bet and modify it until you
-                        <b>publish</b> it.
-                    </c:when>
-                    <c:otherwise>
-                        <c:choose>
-                            <c:when test="${bet.published}">
-                                You cannot save the bet, it's already been published.
-                            </c:when>
-                            <c:otherwise>
-                                Click to update your bet. You can get back to the bet and modify it until you
-                                <b>publish</b> it.
-                            </c:otherwise>
-                        </c:choose>
-                    </c:otherwise>
-                </c:choose>
-            </div>
-            >
-            <button id="publish" data-dojo-type="dijit.form.Button" type="button">
-                Publish
-                <script type="dojo/method" data-dojo-event="onClick" data-dojo-args="evt">
-                    publish();
-                </script>
-            </button>
-            <div data-dojo-type="dijit.Tooltip" data-dojo-props="connectId:'publish',position:['above']">
-                <c:choose>
-                    <c:when test="${bet==null}">
-                        Creating a new bet : please fill in the bet informations
-                        and save before you publish.
-                    </c:when>
-                    <c:otherwise>
-                        <c:choose>
-                            <c:when test="${bet.published}">
-                                This bet has already been published.
-                            </c:when>
-                            <c:otherwise>
-                                <c:choose>
-                                    <c:when test="${fn:length(bet.choices)<=1}">
-                                        You need at least two choices !
-                                    </c:when>
-                                    <c:otherwise>
-                                        Click this button to <b>publish</b> your bet. It will
-                                        then be open for others to join and bet.
-                                        <br/>
-                                        <br/>
-                                        <b>IMPORTANT</b> : you won't be able to modify the bet once you publish it ! Be sure
-                                        you're ready...
-                                    </c:otherwise>
-                                </c:choose>
-                            </c:otherwise>
-                        </c:choose>
-                    </c:otherwise>
-                </c:choose>
-            </div>
-            >
-            <button id="close" data-dojo-type="dijit.form.Button" type="button">
-                Close
-                <script type="dojo/method" data-dojo-event="onClick" data-dojo-args="evt">
-                    closeBet();
-                </script>
-            </button>
-            <div data-dojo-type="dijit.Tooltip" data-dojo-props="connectId:'close',position:['above']">
-                <c:choose>
-                    <c:when test="${bet==null}">
-                        You need to save your bet and publish it before you can close it.
-                    </c:when>
-                    <c:otherwise>
-                        <c:choose>
-                            <c:when test="${!bet.published}">
-                                You need to publish the bet before you close it.
-                            </c:when>
-                            <c:otherwise>
-                                <c:choose>
-                                    <c:when test="${bet.closed}">
-                                        This bet is already closed.
-                                    </c:when>
-                                    <c:otherwise>
-                                        Click this button to <b>close</b> your bet by providing the
-                                        good answer. Once closed, people can't bet any more
-                                        and the results of the bet (for each person involved) is computed.
-                                    </c:otherwise>
-                                </c:choose>
-                            </c:otherwise>
-                        </c:choose>
-                    </c:otherwise>
-                </c:choose>
+            <div id="editButtons">
+                <button id="save" data-dojo-type="dijit.form.Button" type="button">
+                    Save
+                    <script type="dojo/method" data-dojo-event="onClick" data-dojo-args="evt">
+                        this.setAttribute('disabled', true);
+                        createBet();
+                    </script>
+                </button>
+                <div data-dojo-type="dijit.Tooltip" data-dojo-props="connectId:'save',position:['above']">
+                    <c:choose>
+                        <c:when test="${bet==null}">
+                            You are creating a new bet. Once you're finished specifying the bet informations,
+                            click the <b>save</b> button.<br/>You can get back to the bet and modify it until you
+                            <b>publish</b> it.
+                        </c:when>
+                        <c:otherwise>
+                            <c:choose>
+                                <c:when test="${bet.published}">
+                                    You cannot save the bet, it's already been published.
+                                </c:when>
+                                <c:otherwise>
+                                    Click to update your bet. You can get back to the bet and modify it until you
+                                    <b>publish</b> it.
+                                </c:otherwise>
+                            </c:choose>
+                        </c:otherwise>
+                    </c:choose>
+                </div>
+                >
+                <button id="publish" data-dojo-type="dijit.form.Button" type="button">
+                    Publish
+                    <script type="dojo/method" data-dojo-event="onClick" data-dojo-args="evt">
+                        publish();
+                    </script>
+                </button>
+                <div data-dojo-type="dijit.Tooltip" data-dojo-props="connectId:'publish',position:['above']">
+                    <c:choose>
+                        <c:when test="${bet==null}">
+                            Creating a new bet : please fill in the bet informations
+                            and save before you publish.
+                        </c:when>
+                        <c:otherwise>
+                            <c:choose>
+                                <c:when test="${bet.published}">
+                                    This bet has already been published.
+                                </c:when>
+                                <c:otherwise>
+                                    <c:choose>
+                                        <c:when test="${fn:length(bet.choices)<=1}">
+                                            You need at least two choices !
+                                        </c:when>
+                                        <c:otherwise>
+                                            Click this button to <b>publish</b> your bet. It will
+                                            then be open for others to join and bet.
+                                            <br/>
+                                            <br/>
+                                            <b>IMPORTANT</b> : you won't be able to modify the bet once you publish it ! Be sure
+                                            you're ready...
+                                        </c:otherwise>
+                                    </c:choose>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:otherwise>
+                    </c:choose>
+                </div>
+                >
+                <button id="close" data-dojo-type="dijit.form.Button" type="button">
+                    Close
+                    <script type="dojo/method" data-dojo-event="onClick" data-dojo-args="evt">
+                        closeBet();
+                    </script>
+                </button>
+                <div data-dojo-type="dijit.Tooltip" data-dojo-props="connectId:'close',position:['above']">
+                    <c:choose>
+                        <c:when test="${bet==null}">
+                            You need to save your bet and publish it before you can close it.
+                        </c:when>
+                        <c:otherwise>
+                            <c:choose>
+                                <c:when test="${!bet.published}">
+                                    You need to publish the bet before you close it.
+                                </c:when>
+                                <c:otherwise>
+                                    <c:choose>
+                                        <c:when test="${bet.closed}">
+                                            This bet is already closed.
+                                        </c:when>
+                                        <c:otherwise>
+                                            Click this button to <b>close</b> your bet by providing the
+                                            good answer. Once closed, people can't bet any more
+                                            and the results of the bet (for each person involved) is computed.
+                                        </c:otherwise>
+                                    </c:choose>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:otherwise>
+                    </c:choose>
+                </div>
             </div>
 
             <div dojoType="dijit.layout.TabContainer" style="width: 100%;" doLayout="false">
