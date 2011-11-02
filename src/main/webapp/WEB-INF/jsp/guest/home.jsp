@@ -8,22 +8,31 @@
 <w:facet targetObject="${o}" facetName="renderTitle"/>
 <s:layout-render name="${layout.layoutPath}" layout="${layout}" pageTitle="Youbet: home">
     <s:layout-component name="body">
-        <h1>Welcome to <y:logo/></h1>
-        <p>
-            <y:logo/> allows you and your mates to bet on virtually anything. It can be about the issue
-            of a sports event, about how many beers one can drink under the water...
-        </p>
-        <p class="help">
-            We don't handle the financial aspect of the bet if any. In case you're really betting
-            money, we don't wanna know !
-        </p>
-        <p>
-            You can browse bets as a
-            guest, but you'll need a valid account in order to create or join
-            existing bets.
-        </p>
 
-        <h2>Recent activity</h2>
-        <y:activity/>
+        <div class="homeLeft">
+
+            <y:termcloud/>
+
+            <h1>Welcome to <y:logo/></h1>
+
+            <p>
+                <y:logo/> allows you and your mates to bet on virtually anything. It can be about the issue
+                of a sports event, about how many beers one can drink under the water...
+            </p>
+            <p class="help">
+                We don't handle the financial aspect of the bet if any. In case you're really betting
+                money, we don't wanna know !
+            </p>
+            <p>
+                You can browse bets as a
+                guest, but you'll need a valid account in order to create or join
+                existing bets.
+            </p>
+
+            <h2>Recent activity</h2>
+            <y:activity/>
+
+        </div>
+
     </s:layout-component>
 </s:layout-render>

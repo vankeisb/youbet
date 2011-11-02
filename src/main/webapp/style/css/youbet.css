@@ -303,3 +303,50 @@ claro .dijitTabContainerTop-tabs .dijitTabInnerDiv,
 #editButtons {
     margin-bottom: 8px;
 }
+
+.cloudElem1 {
+    font-size: 10px;
+}
+
+.cloudElem2 {
+    font-size: 12px;
+}
+
+.cloudElem3 {
+    font-size: 14px;
+}
+
+.cloudElem4 {
+    font-size: 16px;
+}
+
+.cloudElem5 {
+    font-size: 18px;
+}
+
+.tagCloud {
+    width: 200px;
+    float: right;
+    margin-top: 8px;
+}
+
+.tagCloud-top {
+    border-top: 1px solid gray;
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+    border-radius: 8px 8px 0 0;
+    padding-top:  4px;
+    padding-bottom:  4px;
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+.tagCloud-bottom {
+    border: 1px solid gray;
+    border-radius: 0 0 8px 8px;
+    padding-top:  4px;
+    padding-bottom:  4px;
+    padding-left: 6px;
+    padding-right: 6px;
+
+}

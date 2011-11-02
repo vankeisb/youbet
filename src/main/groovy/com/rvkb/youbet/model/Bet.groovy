@@ -27,7 +27,6 @@ class Bet {
     @SearchableProperty(boost=2.0f)
     String title
 
-    @SearchableProperty
     String description
 
     Boolean published = false
