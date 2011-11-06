@@ -401,3 +401,8 @@ claro .dijitTabContainerTop-tabs .dijitTabInnerDiv,
     background-image: url("../images/icon-close.png");
     background-repeat: no-repeat;
 }
+
+.dijitDisabled .dijitEditorIcon.edit, .dijitEditorIcon.edit {
+    background-image: url("../images/icon-edit.png");
+    background-repeat: no-repeat;
+}
