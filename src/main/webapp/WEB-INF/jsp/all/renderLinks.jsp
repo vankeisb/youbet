@@ -5,7 +5,7 @@
 </script>
 <div class="wokoObjectLinks">
     <c:forEach var="link" items="${renderLinks.links}">
-        <button class="${link.cssClass}" data-dojo-type="dijit.form.Button" type="button">
+        <button class="${link.cssClass}" dojoType="dijit.form.Button" type="button" iconClass="dijitEditorIcon ${link.cssClass}">
             ${link.text}
             <script type="dojo/method" data-dojo-event="onClick" data-dojo-args="evt">
                 this.setAttribute('disabled', true);

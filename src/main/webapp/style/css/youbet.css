@@ -350,3 +350,54 @@ claro .dijitTabContainerTop-tabs .dijitTabInnerDiv,
     padding-right: 6px;
 
 }
+
+.dijitTitlePaneTextNode {
+    font-size: 18px;
+    padding-left: 22px;
+    background-position: left;
+    background-repeat: no-repeat;
+}
+
+.Bet.choices .dijitTitlePaneTextNode {
+    background-image: url("../images/icon-amounts.png");
+}
+
+.Bet.description .dijitTitlePaneTextNode {
+    background-image: url("../images/icon-description.png");
+}
+
+.Bet.history .dijitTitlePaneTextNode, .activity .dijitTitlePaneTextNode  {
+    background-image: url("../images/icon-history.png");
+}
+
+.dijitArrowNode {
+    display: none;
+}
+
+.btnSearch {
+    background-image: url("../images/icon-search.png");
+}
+
+.btnCreate {
+    background-image: url("../images/icon-create.png");
+}
+
+.joinLink {
+    background-image: url("../images/icon-join.png");
+    background-repeat: no-repeat;
+}
+
+.dijitDisabled .dijitEditorIcon.btnSave, .dijitEditorIcon.btnSave {
+    background-image: url("../images/icon-save.png");
+    background-repeat: no-repeat;
+}
+
+.dijitDisabled .dijitEditorIcon.btnPublish, .dijitEditorIcon.btnPublish {
+    background-image: url("../images/icon-publish.png");
+    background-repeat: no-repeat;
+}
+
+.dijitDisabled .dijitEditorIcon.btnClose, .dijitEditorIcon.btnClose {
+    background-image: url("../images/icon-close.png");
+    background-repeat: no-repeat;
+}

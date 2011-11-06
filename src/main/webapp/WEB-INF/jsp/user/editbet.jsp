@@ -341,14 +341,14 @@
                             </script>
                         </c:when>
                         <c:otherwise>
-                            <h1>Edit bet</h1>
+                            <h1 class="wokoObjectTitle">Edit bet</h1>
                         </c:otherwise>
                     </c:choose>
                 </c:otherwise>
             </c:choose>
 
             <div id="editButtons">
-                <button id="save" data-dojo-type="dijit.form.Button" type="button">
+                <button id="save" dojoType="dijit.form.Button" type="button" iconClass="dijitEditorIcon btnSave">
                     Save
                     <script type="dojo/method" data-dojo-event="onClick" data-dojo-args="evt">
                         this.setAttribute('disabled', true);
@@ -376,7 +376,7 @@
                     </c:choose>
                 </div>
                 >
-                <button id="publish" data-dojo-type="dijit.form.Button" type="button">
+                <button id="publish" dojoType="dijit.form.Button" type="button" iconClass="dijitEditorIcon btnPublish">
                     Publish
                     <script type="dojo/method" data-dojo-event="onClick" data-dojo-args="evt">
                         publish();
@@ -413,7 +413,7 @@
                     </c:choose>
                 </div>
                 >
-                <button id="close" data-dojo-type="dijit.form.Button" type="button">
+                <button id="close" dojoType="dijit.form.Button" type="button" iconClass="dijitEditorIcon btnClose">
                     Close
                     <script type="dojo/method" data-dojo-event="onClick" data-dojo-args="evt">
                         closeBet();

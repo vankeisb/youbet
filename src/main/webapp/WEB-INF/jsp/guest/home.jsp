@@ -29,8 +29,9 @@
                 existing bets.
             </p>
 
-            <h2>Recent activity</h2>
-            <y:activity/>
+            <div class="activity" dojoType="dijit.TitlePane" title="Recent activity">
+                <y:activity/>
+            </div>
 
         </div>
 

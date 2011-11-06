@@ -42,14 +42,14 @@
                     <div id="searchBox">
                         <s:form id="searchForm" action="/search">
                             <s:text name="facet.query" class="dojoLike" id="searchField"/>
-                            <button data-dojo-type="dijit.form.Button" type="submit" name="search">
+                            <button dojoType="dijit.form.Button" type="submit" name="search" iconClass="dijitEditorIcon btnSearch">
                                 Search bets
                                 <script type="dojo/method" data-dojo-event="onClick" data-dojo-args="evt">
                                     this.setAttribute('disabled', true);
                                     dojo.byId("searchForm").submit();
                                 </script>
                             </button>
-                            <button class="createBtn" data-dojo-type="dijit.form.Button">
+                            <button dojoType="dijit.form.Button" iconClass="dijitEditorIcon btnCreate">
                                 Create a new bet !
                                 <script type="dojo/method" data-dojo-event="onClick" data-dojo-args="evt">
                                     this.setAttribute('disabled', true);

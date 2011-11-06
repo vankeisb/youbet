@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="choices" value="${renderPropertyValue.propertyValue}"/>
 <c:set var="bet" value="${renderPropertyValue.bet}"/>
-<div class="betChoices">
+<div class="betChoices" dojoType="dijit.TitlePane" title="Choices & amounts">
     <table cellpadding="8" cellspacing="0">
         <tbody>
             <c:forEach var="choice" items="${choices}" varStatus="vs">
