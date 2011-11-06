@@ -280,20 +280,6 @@ claro .dijitTabContainerTop-tabs .dijitTabInnerDiv,
         -moz-border-radius: 0 0 8px 8px;
 }
 
-.dijitTitlePane {
-    border-radius: 8px 8px 8px 8px;
-     -moz-border-radius: 8px 8px 8px 8px;
-    border: 1px solid #B5BCC7;
-}
-
-.claro .dijitTitlePaneTitle {
-  background-color: #EFEFEF;
-  background-repeat: repeat-x;
-  border: 1px solid #B5BCC7;
-  min-height: 17px;
-  padding: 0 7px 3px;
-}
-
 .claro .dijitButton .dijitButtonNode, .claro .dijitDropDownButton .dijitButtonNode, .claro .dijitComboButton .dijitButtonNode, .claro .dijitToggleButton .dijitButtonNode {
   border-radius: 6px 6px 6px 6px;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
@@ -350,6 +336,23 @@ claro .dijitTabContainerTop-tabs .dijitTabInnerDiv,
     padding-right: 6px;
 
 }
+
+/*
+.dijitTitlePane {
+    border-radius: 8px 8px 8px 8px;
+     -moz-border-radius: 8px 8px 8px 8px;
+    border: 1px solid #B5BCC7;
+}
+
+.claro .dijitTitlePaneTitle {
+  background-color: #EFEFEF;
+  background-repeat: repeat-x;
+  border: 1px solid #B5BCC7;
+  min-height: 17px;
+  padding: 0 7px 3px;
+}
+*/
+
 
 .dijitTitlePaneTextNode {
     font-size: 18px;
