@@ -125,6 +125,10 @@ ul.wokoObjectLinks  {
 
 #wokoMessages, .messages {
     padding: 4px;
+    padding-left: 28px;
+    background-image: url("../images/icon-message.png");
+    background-position: left;
+    background-repeat: no-repeat;
     border: 1px solid #99ff99;
     background-color: #DDFFDD;
     color: green;
@@ -173,6 +177,10 @@ ul.wokoObjectLinks  {
     color: #660033;
     font-size: 12px;
     width: 100%;
+    padding-left: 28px;
+    background-image: url("../images/icon-error.png");
+    background-position: left;
+    background-repeat: no-repeat;
 }
 
 .errorsContainer ul {
@@ -377,15 +385,15 @@ claro .dijitTabContainerTop-tabs .dijitTabInnerDiv,
     display: none;
 }
 
-.btnSearch {
+.dijitDisabled .dijitEditorIcon.btnSearch, .dijitEditorIcon.btnSearch {
     background-image: url("../images/icon-search.png");
 }
 
-.btnCreate {
+.dijitDisabled .dijitEditorIcon.btnCreate, .dijitEditorIcon.btnCreate {
     background-image: url("../images/icon-create.png");
 }
 
-.joinLink {
+.dijitDisabled .dijitEditorIcon.joinLink, .dijitEditorIcon.joinLink {
     background-image: url("../images/icon-join.png");
     background-repeat: no-repeat;
 }
