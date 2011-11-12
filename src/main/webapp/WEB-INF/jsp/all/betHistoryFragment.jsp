@@ -36,11 +36,11 @@
         for (String prettyDate : orderedKeys) {
             List<BetHistoryEntry> entries = entriesByDate.get(prettyDate);
     %>
-            <tr>
-                <td class="dateGroup prettyDate" valign="top">
+            <tr class="dateGroup">
+                <td class="prettyDate" valign="top">
                     <c:out value="<%=prettyDate%>"/>
                 </td>
-                <td class="dateGroup" valign="top">
+                <td valign="top">
                     <% for (BetHistoryEntry e : entries) { %>
                         <div>
                             <w:url object="<%=e.getUser()%>" var="userLink"/>

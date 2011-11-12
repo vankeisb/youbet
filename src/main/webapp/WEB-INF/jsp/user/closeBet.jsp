@@ -11,9 +11,6 @@
     <s:layout-component name="body">
         <div class="wokoObject">
             <w:includeFacet targetObject="${bet}" facetName="renderTitle"/>
-            <div class="messages">
-                You cannot re-open a closed bet, so be careful when you close it.
-            </div>
             <p>
                 Please select the good choice for this bet, and submit. All amounts will
                 be computed, and participants will be notified.

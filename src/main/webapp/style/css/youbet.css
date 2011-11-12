@@ -253,6 +253,10 @@ input.dojoLike:focus {
     margin: 12px;
 }
 
+tr.dateGroup {
+    border-bottom: 1px solid #d3d3d3;
+}
+
 .prettyDate {
     padding: 2px;
 }
@@ -385,35 +389,72 @@ claro .dijitTabContainerTop-tabs .dijitTabInnerDiv,
     display: none;
 }
 
-.dijitDisabled .dijitEditorIcon.btnSearch, .dijitEditorIcon.btnSearch {
+.dijitDisabled .dijitEditorIcon.btnSearch {
+    background-image: url("../images/icon-search-disabled.png");
+    background-repeat: no-repeat;
+}
+
+.dijitEditorIcon.btnSearch {
     background-image: url("../images/icon-search.png");
+    background-repeat: no-repeat;
 }
 
-.dijitDisabled .dijitEditorIcon.btnCreate, .dijitEditorIcon.btnCreate {
+.dijitDisabled .dijitEditorIcon.btnCreate {
+    background-image: url("../images/icon-create-disabled.png");
+    background-repeat: no-repeat;
+}
+
+.dijitEditorIcon.btnCreate {
     background-image: url("../images/icon-create.png");
+    background-repeat: no-repeat;
 }
 
-.dijitDisabled .dijitEditorIcon.joinLink, .dijitEditorIcon.joinLink {
+.dijitDisabled .dijitEditorIcon.joinLink {
+    background-image: url("../images/icon-join-disabled.png");
+    background-repeat: no-repeat;
+}
+
+.dijitEditorIcon.joinLink {
     background-image: url("../images/icon-join.png");
     background-repeat: no-repeat;
 }
 
-.dijitDisabled .dijitEditorIcon.btnSave, .dijitEditorIcon.btnSave {
+.dijitDisabled .dijitEditorIcon.btnSave {
+    background-image: url("../images/icon-save-disabled.png");
+    background-repeat: no-repeat;
+}
+
+.dijitEditorIcon.btnSave {
     background-image: url("../images/icon-save.png");
     background-repeat: no-repeat;
 }
 
-.dijitDisabled .dijitEditorIcon.btnPublish, .dijitEditorIcon.btnPublish {
+.dijitDisabled .dijitEditorIcon.btnPublish {
+    background-image: url("../images/icon-publish-disabled.png");
+    background-repeat: no-repeat;
+}
+
+.dijitEditorIcon.btnPublish {
     background-image: url("../images/icon-publish.png");
     background-repeat: no-repeat;
 }
 
-.dijitDisabled .dijitEditorIcon.btnClose, .dijitEditorIcon.btnClose {
+.dijitDisabled .dijitEditorIcon.btnClose {
+    background-image: url("../images/icon-close-disabled.png");
+    background-repeat: no-repeat;
+}
+
+.dijitEditorIcon.btnClose {
     background-image: url("../images/icon-close.png");
     background-repeat: no-repeat;
 }
 
-.dijitDisabled .dijitEditorIcon.edit, .dijitEditorIcon.edit {
+.dijitDisabled .dijitEditorIcon.edit {
+    background-image: url("../images/icon-edit-disabled.png");
+    background-repeat: no-repeat;
+}
+
+.dijitEditorIcon.edit {
     background-image: url("../images/icon-edit.png");
     background-repeat: no-repeat;
 }

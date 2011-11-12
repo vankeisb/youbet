@@ -20,6 +20,7 @@ class CloseBet extends BaseResolutionFacet {
 
     Resolution getResolution(ActionBeanContext abc) {
         if (choice==null) {
+            abc.messages.add(new SimpleMessage("You cannot re-open a closed bet, so be careful when you close it."))
             return new ForwardResolution('/WEB-INF/jsp/user/closeBet.jsp')
         } else {
             // choice specified, close the bet !
